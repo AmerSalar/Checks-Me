@@ -1,0 +1,36 @@
+.cont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 25px;
+    /* border: solid 1px white; */
+    border-radius: 25px;
+}
+
+.capsule {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 24px;
+    height: 15px;
+    margin: 3px;
+    border-top: solid 2px white;
+    border-bottom: solid 1px white;
+    border-radius: 50px;
+    transform: scale(1.2);
+}
+
+.capsule:checked {
+    background-color: hsla(0, 0%, 100%, 0.25);
+}
+
+.red {
+    background-color: brown !important;
+}
+
+.yellow {
+    background-color: gold !important;
+}
+
+.green {
+    background-color: green !important;
+}

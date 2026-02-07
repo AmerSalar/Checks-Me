@@ -1,0 +1,21 @@
+.icon {
+    -webkit-tap-highlight-color: transparent;
+    cursor: pointer;
+    background: transparent;
+    /* background: rgb(50, 100, 200); */
+    border: none;
+    /* border-bottom: solid 3px rgb(46, 89, 175);
+    border-top: solid 3px rgb(78, 120, 206); */
+    /* box-shadow: 5px 5px 5px hsla(0, 0%, 0%, 0.1); */
+    /* border: solid 1px white; */
+    border-radius: 40px;
+    width: 50px;
+    padding: 0px;
+    font-size: 1.5rem;
+    margin: 5px;
+}
+
+.icon:active {
+    transform: scale(0.95);
+    background-color: #ffffff10;
+}

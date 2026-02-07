@@ -1,0 +1,15 @@
+.cont {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: min-content;
+    margin: 3px;
+    padding: 3px;
+    border: solid 1px gray;
+    border-radius: 25px;
+}
+
+h3 {
+    margin-left: 5px;
+    font-size: 0.625rem;
+}

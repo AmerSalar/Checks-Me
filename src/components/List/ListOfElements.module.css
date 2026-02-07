@@ -1,0 +1,19 @@
+.cont {
+    margin: 10px;
+}
+
+.time {
+    padding-left: 10px;
+    width: 100%;
+    align-content: center;
+    /* background-color: rgb(46, 89, 175); */
+    border-radius: 5px;
+}
+
+.upperCont {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(40, 115, 185);
+    /* border: solid 1px white; */
+    border-radius: 15px;
+}
