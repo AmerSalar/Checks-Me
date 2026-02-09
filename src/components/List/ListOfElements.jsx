@@ -14,7 +14,7 @@ function ListOfElements({ timezone, elements = [] }) {
     <div className={styles.cont}>
       <div className={styles.upperCont}>
         <h3 className={styles.time}>{timezone}</h3>
-        <IconButton icon={"+"} func={handleAddingTask} />
+        <IconButton icon={"+"} func={handleAddingTask} className={"addBtn"} />
       </div>
       {data.map((e, i) => {
         return <ListElement key={i} text={e} />;

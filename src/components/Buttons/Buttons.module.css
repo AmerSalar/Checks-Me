@@ -2,6 +2,7 @@
     -webkit-tap-highlight-color: transparent;
     cursor: pointer;
     background: transparent;
+    color: #ccc;
     /* background: rgb(50, 100, 200); */
     border: none;
     /* border-bottom: solid 3px rgb(46, 89, 175);
@@ -15,7 +16,21 @@
     margin: 5px;
 }
 
+.icon:hover {
+    color: white;
+}
+
 .icon:active {
     transform: scale(0.95);
     background-color: #ffffff10;
+}
+
+.labBtn {
+    position: absolute;
+    padding: 10px;
+    font-size: 0.75rem;
+    border: none;
+    border-radius: 10px;
+    background-color: transparent;
+    margin: 10px;
 }

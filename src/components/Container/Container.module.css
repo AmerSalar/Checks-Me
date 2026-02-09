@@ -1,0 +1,17 @@
+.cont {
+    height: 40vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+    position: absolute;
+}
+
+.show {
+    display: flex;
+}
+
+.hide {
+    display: none;
+}

@@ -1,10 +1,14 @@
 .cont {
-    position: absolute;
+    position: fixed;
+    background-color: transparent;
     bottom: 0%;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    backdrop-filter: blur(20px);
+    height: 9dvh;
     width: 100%;
+    z-index: 2;
 }
 
 .plusCont {

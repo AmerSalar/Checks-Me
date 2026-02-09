@@ -1,0 +1,44 @@
+.cont {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: hsl(0, 0%, 20%);
+    box-shadow: 0px 3px 5px hsla(0, 0%, 0%, 0.3);
+    border-top: solid 2px hsla(0, 0%, 100%, 0.3);
+    height: 35dvh;
+    width: 90%;
+    border-radius: 50px;
+    /* border: solid 2px white; */
+}
+
+.upperCont input {
+    width: 55%;
+    border: none;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.upperCont select {
+    transform: translateX(6px);
+    padding: 5px;
+}
+
+.lowerCont {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    gap: 25px;
+}
+
+.Btn button {
+    width: 100px;
+    padding: 5px;
+    background-color: rgb(40, 115, 185);
+    border-radius: 15px;
+}
+
+.Btn button:active {
+    background-color: rgb(49, 127, 201);
+}
