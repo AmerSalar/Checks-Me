@@ -1,15 +1,13 @@
 import IconButton from "../Buttons/IconButton";
 import styles from "./DropDown.module.css";
-import React, { useState } from "react";
-function DropDown() {
-  const [choice, setChoice] = useState("morning");
-
+import React, { _ } from "react";
+function DropDown({ t, setT }) {
   return (
     <>
       <select
         className={styles.cont}
-        value={choice}
-        onChange={(e) => setChoice(e.target.value)}
+        value={t}
+        onChange={(e) => setT(e.target.value)}
       >
         <option value="morning">Morning</option>
         <option value="midday">Midday</option>

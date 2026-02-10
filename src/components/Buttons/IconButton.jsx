@@ -5,7 +5,7 @@ import {} from "react";
 function IconButton({ icon, set = null, func = null }) {
   function handle() {
     if (func != null) func();
-    if (set != null) {
+    if (set) {
       set((prev) => !prev);
     }
   }

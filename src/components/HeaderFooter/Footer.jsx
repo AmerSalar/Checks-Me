@@ -10,13 +10,11 @@ function Footer() {
   const plus = <FiPlusCircle size="50px" />;
   return (
     <div className={styles.cont}>
-      <IconButton icon={"="} />
       <IconButton icon={cal} />
       <div className={styles.plusCont}>
         <IconButton icon={plus} set={set} />
       </div>
       <IconButton icon={pie} />
-      <IconButton icon={"="} />
     </div>
   );
 }

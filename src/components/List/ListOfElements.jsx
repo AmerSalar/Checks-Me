@@ -5,10 +5,8 @@ import IconButton from "../Buttons/IconButton";
 import React, { useEffect, useState } from "react";
 
 function ListOfElements({ timezone, elements = [] }) {
-  const [data, setData] = useState(elements);
-
   function handleAddingTask() {
-    setData((d) => [...d, "New"]);
+    // setData((d) => [...d, "New"]);
   }
   return (
     <div className={styles.cont}>
@@ -16,7 +14,7 @@ function ListOfElements({ timezone, elements = [] }) {
         <h3 className={styles.time}>{timezone}</h3>
         <IconButton icon={"+"} func={handleAddingTask} className={"addBtn"} />
       </div>
-      {data.map((e, i) => {
+      {elements.map((e, i) => {
         return <ListElement key={i} text={e} />;
       })}
     </div>
