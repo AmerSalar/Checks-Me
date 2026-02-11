@@ -7,6 +7,14 @@
     border-radius: 25px;
 }
 
+.show {
+    display: flex;
+}
+
+.hide {
+    display: none;
+}
+
 .capsule {
     appearance: none;
     -webkit-appearance: none;

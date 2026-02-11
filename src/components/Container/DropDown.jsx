@@ -1,13 +1,21 @@
 import IconButton from "../Buttons/IconButton";
 import styles from "./DropDown.module.css";
 import React, { _ } from "react";
-function DropDown({ t, setT }) {
+import clsx from "clsx";
+function DropDown({ t, setT, specificTime = null }) {
+  function setTime(e) {
+    setT(e.target.value);
+  }
   return (
     <>
       <select
-        className={styles.cont}
-        value={t}
-        onChange={(e) => setT(e.target.value)}
+        className={clsx(
+          styles.cont,
+          !specificTime && styles.show,
+          specificTime && styles.hide,
+        )}
+        value={specificTime || t}
+        onChange={(e) => setTime(e)}
       >
         <option value="morning">Morning</option>
         <option value="midday">Midday</option>

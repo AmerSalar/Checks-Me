@@ -12,28 +12,16 @@
     /* border: solid 2px white; */
 }
 
-.upperCont input {
-    width: 55%;
-    border: none;
-    border-radius: 20px;
-    padding: 10px;
-}
-
-.upperCont select {
-    transform: translateX(6px);
-    padding: 5px;
-}
-
 .lowerCont {
     width: 50%;
     display: flex;
     justify-content: center;
-    margin-top: 30px;
+    margin-top: 20px;
     gap: 25px;
 }
 
 .Btn button {
-    width: 100px;
+    width: 150px;
     padding: 5px;
     background-color: rgb(40, 115, 185);
     border-radius: 15px;
@@ -41,4 +29,10 @@
 
 .Btn button:active {
     background-color: rgb(49, 127, 201);
+}
+
+.cancel {
+    position: absolute;
+    top: 12%;
+    right: 7%;
 }

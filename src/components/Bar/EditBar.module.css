@@ -1,0 +1,29 @@
+.cont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 25px;
+  /* border: solid 1px white; */
+  border-radius: 25px;
+}
+
+.show {
+  display: flex;
+}
+
+.hide {
+  display: none;
+}
+
+.cont button {
+  height: 33px;
+  margin: 0;
+  width: 33px;
+  transform: translateY(2px);
+  scale: 0.8;
+}
+
+.cont button:last-child {
+  color: #dd3d3d;
+}

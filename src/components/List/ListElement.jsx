@@ -1,4 +1,5 @@
 import Bar from "../Bar/CircleBar";
+import EditBar from "../Bar/EditBar";
 import styles from "./ListElement.module.css";
 import React, { useState } from "react";
 
@@ -10,6 +11,7 @@ function ListElement(props) {
     <div className={styles.cont}>
       <h3>{text}</h3>
       <Bar checker={setCheck} />
+      <EditBar />
     </div>
   );
 }

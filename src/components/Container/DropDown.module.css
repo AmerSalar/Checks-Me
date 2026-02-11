@@ -4,4 +4,14 @@
     border: none;
     background-color: #444;
     color: white;
+    transform: translateX(6px);
+    padding: 5px;
+}
+
+.show {
+    display: auto;
+}
+
+.hide {
+    display: none;
 }

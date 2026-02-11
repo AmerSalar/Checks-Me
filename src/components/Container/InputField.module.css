@@ -1,1 +1,14 @@
-.cont {}
+.cont {
+    width: 55%;
+    border: none;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.alone {
+    width: 90%;
+}
+
+.notAlone {
+    width: 55%;
+}

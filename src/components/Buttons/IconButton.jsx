@@ -1,16 +1,15 @@
 import styles from "./Buttons.module.css";
-import { CiApple } from "react-icons/ci";
 import {} from "react";
 
 function IconButton({ icon, set = null, func = null }) {
-  function handle() {
-    if (func != null) func();
+  function handle(e) {
+    if (func != null) func(e);
     if (set) {
-      set((prev) => !prev);
+      set();
     }
   }
   return (
-    <button className={styles.icon} onClick={handle}>
+    <button className={styles.icon} onClick={(e) => handle(e)}>
       {icon}
     </button>
   );
