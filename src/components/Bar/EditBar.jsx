@@ -4,8 +4,20 @@ import { FiTrash, FiArrowUp, FiArrowDown } from "react-icons/fi";
 import clsx from "clsx";
 import { useContext } from "react";
 import Context from "../App/Context";
-function EditBar() {
-  const { isEdit } = useContext(Context);
+function EditBar({ eId, eTime, eIndex }) {
+  const { isEdit, del = null, up, down } = useContext(Context);
+
+  function deleteTask() {
+    if (del !== null) {
+      del(eId, eTime);
+    }
+  }
+  function moveUp() {
+    up(eIndex, eTime);
+  }
+  function moveDown() {
+    down(eIndex, eTime);
+  }
   return (
     <div
       className={clsx(
@@ -14,9 +26,13 @@ function EditBar() {
         !isEdit && styles.hide,
       )}
     >
-      <IconButton icon={<FiArrowDown />} />
-      <IconButton icon={<FiArrowUp />} />
-      <IconButton icon={<FiTrash />} className={styles.trash} />
+      <IconButton icon={<FiArrowDown />} func={moveDown} />
+      <IconButton icon={<FiArrowUp />} func={moveUp} />
+      <IconButton
+        icon={<FiTrash />}
+        className={styles.trash}
+        func={deleteTask}
+      />
     </div>
   );
 }

@@ -21,7 +21,15 @@ function ListOfElements({ timezone, elements = [] }) {
         />
       </div>
       {elements.map((e, i) => {
-        return <ListElement key={i} text={e} />;
+        return (
+          <ListElement
+            key={e.id}
+            text={e.text}
+            eId={e.id}
+            eTime={timezone.toLowerCase()}
+            eIndex={i}
+          />
+        );
       })}
     </div>
   );

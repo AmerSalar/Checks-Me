@@ -17,7 +17,6 @@ function AddContainer() {
       } else {
         add(time, task);
       }
-      // resetinputs();
     }
   }
 

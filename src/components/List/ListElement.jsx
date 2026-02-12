@@ -11,7 +11,7 @@ function ListElement(props) {
     <div className={styles.cont}>
       <h3>{text}</h3>
       <Bar checker={setCheck} />
-      <EditBar />
+      <EditBar eId={props.eId} eTime={props.eTime} eIndex={props.eIndex} />
     </div>
   );
 }

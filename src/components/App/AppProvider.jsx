@@ -6,18 +6,71 @@ function AppProvider({ children }) {
   const [isEdit, setIsEdit] = useState(false);
   const [specific, setSpecific] = useState(null);
   const [data, setData] = useState({
-    morning: ["wake up soon", "do fajr"],
-    midday: ["pray dhuhr", "eat lunch"],
-    afternoon: ["study well", "workout"],
-    evening: ["eat dinner"],
-    night: ["write your journal"],
+    morning: [
+      { id: crypto.randomUUID(), text: "Wake up early" },
+      { id: crypto.randomUUID(), text: "Pray Fajr" },
+      { id: crypto.randomUUID(), text: "Eat breakfast" },
+    ],
+    midday: [
+      { id: crypto.randomUUID(), text: "Pray Dhuhr" },
+      { id: crypto.randomUUID(), text: "Eat lunch" },
+      { id: crypto.randomUUID(), text: "Study session for 30 mins" },
+    ],
+    afternoon: [
+      { id: crypto.randomUUID(), text: "Pray Asir" },
+      { id: crypto.randomUUID(), text: "Workout session" },
+      { id: crypto.randomUUID(), text: "Walk outside for 30 mins" },
+    ],
+    evening: [
+      { id: crypto.randomUUID(), text: "Pray Maghrib" },
+      { id: crypto.randomUUID(), text: "Eat dinner" },
+    ],
+    night: [
+      { id: crypto.randomUUID(), text: "Pray Isha" },
+      { id: crypto.randomUUID(), text: "Read or listen to educationals" },
+      { id: crypto.randomUUID(), text: "Study session for 30 mins" },
+      { id: crypto.randomUUID(), text: "Sleep before 10:00pm" },
+    ],
   });
   function toggle() {
     setIsAdding((prev) => !prev);
   }
   function addTask(time, task) {
-    setData((prev) => ({ ...prev, [time]: [...prev[time], task] }));
+    const newTask = {
+      id: crypto.randomUUID(),
+      text: task,
+    };
+    setData((prev) => ({ ...prev, [time]: [...prev[time], newTask] }));
   }
+  function deleteTask(id = null, time = null) {
+    if (id !== null || time !== null) {
+      const filteredData = data[time].filter((e) => e.id !== id);
+      setData((prev) => ({ ...prev, [time]: filteredData }));
+    }
+  }
+  function moveUp(index = null, time = null) {
+    if (index !== null || time !== null) {
+      if (data[time][index - 1]) {
+        const array = [...data[time]];
+        [array[index - 1], array[index]] = [array[index], array[index - 1]];
+        setData((prev) => ({ ...prev, [time]: array }));
+      } else {
+        console.log("Element is at the top!");
+      }
+    }
+  }
+  function moveDown(index = null, time = null) {
+    if (index !== null || time !== null) {
+      if (data[time][index + 1]) {
+        const array = [...data[time]];
+        [array[index + 1], array[index]] = [array[index], array[index + 1]];
+        setData((prev) => ({ ...prev, [time]: array }));
+      }
+    } else {
+      console.log("Element is at the bottom!");
+    }
+  }
+
   function setS(time) {
     setSpecific(time);
   }
@@ -28,6 +81,9 @@ function AppProvider({ children }) {
     setSpecific: setS,
     specificTime: specific,
     add: addTask,
+    del: deleteTask,
+    up: moveUp,
+    down: moveDown,
     setData: setData,
     data: data,
     get: isAdding,
@@ -42,5 +98,4 @@ function AppProvider({ children }) {
     </>
   );
 }
-
 export default AppProvider;
