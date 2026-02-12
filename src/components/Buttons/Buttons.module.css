@@ -26,3 +26,15 @@
     transform: scale(0.95);
     background-color: #ffffff10;
 }
+
+.on {
+    color: rgb(100, 175, 245);
+}
+
+.on:hover {
+    color: rgb(127, 188, 245);
+}
+
+.off {
+    color: #ccc;
+}

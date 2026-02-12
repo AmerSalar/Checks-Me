@@ -8,6 +8,10 @@
     padding: 5px;
 }
 
+.cont:focus {
+    outline: solid 2px rgb(40, 115, 185);
+}
+
 .show {
     display: auto;
 }

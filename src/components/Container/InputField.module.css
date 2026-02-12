@@ -1,8 +1,14 @@
 .cont {
+    background-color: #444;
+    color: #ddd;
     width: 55%;
     border: none;
     border-radius: 20px;
     padding: 10px;
+}
+
+.cont:focus {
+    outline: solid 2px rgb(40, 115, 185);
 }
 
 .alone {
