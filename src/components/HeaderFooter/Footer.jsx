@@ -1,20 +1,25 @@
 import styles from "./Footer.module.css";
 import IconButton from "../Buttons/IconButton";
-import { FiPlusCircle, FiCalendar, FiPieChart } from "react-icons/fi";
+import {
+  FiList,
+  FiUser,
+  FiPlusCircle,
+  FiCalendar,
+  FiPieChart,
+} from "react-icons/fi";
 import React, { useContext } from "react";
 import Context from "../App/Context";
 function Footer() {
   const { set } = useContext(Context);
-  const cal = <FiCalendar size="30px" />;
-  const pie = <FiPieChart size="30px" />;
-  const plus = <FiPlusCircle size="50px" />;
   return (
     <div className={styles.cont}>
-      <IconButton icon={cal} />
+      <IconButton icon={<FiList color="rgb(100, 175, 245)" />} />
+      <IconButton icon={<FiCalendar />} />
       <div className={styles.plusCont}>
-        <IconButton icon={plus} set={set} />
+        <IconButton icon={<FiPlusCircle size="45px" />} set={set} />
       </div>
-      <IconButton icon={pie} />
+      <IconButton icon={<FiPieChart />} />
+      <IconButton icon={<FiUser />} />
     </div>
   );
 }

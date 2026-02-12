@@ -1,6 +1,6 @@
 import styles from "./Header.module.css";
 import IconButton from "../Buttons/IconButton";
-import { FiUser, FiBell, FiEdit } from "react-icons/fi";
+import { FiBell, FiEdit } from "react-icons/fi";
 import { useContext } from "react";
 import Context from "../App/Context";
 function Header() {
@@ -11,7 +11,6 @@ function Header() {
       <div className={styles.rightCont}>
         <IconButton icon={<FiEdit />} set={toggleEdit} />
         <IconButton icon={<FiBell />} />
-        <IconButton icon={<FiUser />} />
       </div>
     </div>
   );

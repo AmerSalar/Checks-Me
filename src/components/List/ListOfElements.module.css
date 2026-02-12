@@ -1,5 +1,8 @@
 .cont {
     margin: 10px;
+    border: solid 1px #444;
+    border-radius: 25px;
+    padding: 2%;
 }
 
 .time {

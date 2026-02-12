@@ -6,7 +6,7 @@
     align-items: center;
     backdrop-filter: blur(20px);
     width: 100%;
-    height: 9dvh;
+    height: 60px;
     margin-bottom: 25px;
     z-index: 2;
 }
@@ -19,14 +19,17 @@
 
 .rightCont {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     margin-right: 10px;
-    width: 150px;
+    width: 85px;
     height: 35px;
     /* border: solid 1px white; */
 }
 
 .rightCont button {
-    scale: 0.8;
+    width: 40px;
+    height: 40px;
+    margin: 0%;
+    font-size: 1.25rem;
 }
