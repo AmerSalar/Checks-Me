@@ -1,7 +1,8 @@
 import styles from "./Day.module.css";
-function Day({ number = "", text = "" }) {
+import clsx from "clsx";
+function Day({ number = "", text = "", today = false }) {
   return (
-    <div className={styles.cont}>
+    <div className={clsx(styles.cont, today && styles.today)}>
       <h2>{number}</h2>
       <p>{text}</p>
     </div>

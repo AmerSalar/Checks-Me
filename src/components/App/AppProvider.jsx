@@ -1,8 +1,7 @@
 import { useState } from "react";
 import Context from "./Context";
 
-function AppProvider({ children }) {
-  const [page, setPage] = useState(0);
+function AppProvider({ children, setPage }) {
   const [isAdding, setIsAdding] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
   const [specific, setSpecific] = useState(null);
@@ -85,7 +84,6 @@ function AppProvider({ children }) {
   }
   const context = {
     togglePage: togglePage,
-    activePage: page,
     setSpecific: setS,
     specificTime: specific,
     add: addTask,

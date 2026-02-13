@@ -7,7 +7,16 @@
     padding-bottom: 30px;
 }
 
+.show {
+    display: block;
+}
+
+.hide {
+    display: none;
+}
+
 .cont h3 {
+    font-size: 0.5rem;
     text-align: center;
     width: 40px;
     margin: 0%;

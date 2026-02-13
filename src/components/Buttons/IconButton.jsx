@@ -5,6 +5,7 @@ import clsx from "clsx";
 function IconButton({ icon, func = null, active = false }) {
   function handle(e) {
     if (func !== null) func(e);
+    console.log(new Date().getFullYear());
   }
   return (
     <button

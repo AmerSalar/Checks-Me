@@ -1,0 +1,13 @@
+.cont {
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.show {
+    display: flex;
+}
+
+.hide {
+    display: none;
+}
