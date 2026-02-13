@@ -5,8 +5,8 @@
     color: #ccc;
     /* background: rgb(50, 100, 200); */
     border: none;
-    /* border-bottom: solid 3px rgb(46, 89, 175);
-    border-top: solid 3px rgb(78, 120, 206); */
+    /* border-bottom: solid 1px #eeeeee55;
+    border-top: solid 1px #eeeeeeff; */
     /* box-shadow: 5px 5px 5px hsla(0, 0%, 0%, 0.1); */
     /* border: solid 1px white; */
     /* background-color: #333; */
@@ -23,8 +23,7 @@
 }
 
 .icon:active {
-    transform: scale(0.95);
-    background-color: #ffffff10;
+    transform: scale(0.98);
 }
 
 .on {

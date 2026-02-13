@@ -2,22 +2,9 @@ import styles from "./Buttons.module.css";
 import {} from "react";
 import clsx from "clsx";
 
-function IconButton({
-  icon,
-  set = null,
-  func = null,
-  active = false,
-  toggle,
-  i = null,
-}) {
+function IconButton({ icon, func = null, active = false }) {
   function handle(e) {
-    if (toggle) toggle(i);
-
-    if (func != null) func(e);
-
-    if (set) {
-      set();
-    }
+    if (func !== null) func(e);
   }
   return (
     <button

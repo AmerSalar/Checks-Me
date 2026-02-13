@@ -6,7 +6,8 @@ import { FiCheckCircle, FiX } from "react-icons/fi";
 import { useContext, useEffect, useState } from "react";
 import Context from "../App/Context";
 function AddContainer() {
-  const { set, add, specificTime, setSpecific, get } = useContext(Context);
+  const { toggleAdding, add, specificTime, setSpecific, get } =
+    useContext(Context);
   const [task, setTask] = useState("");
   const [time, setTime] = useState("morning");
 
@@ -17,6 +18,8 @@ function AddContainer() {
       } else {
         add(time, task);
       }
+
+      toggleAdding();
     }
   }
 
@@ -32,7 +35,7 @@ function AddContainer() {
     <>
       <div className={styles.cont}>
         <div className={styles.cancel}>
-          <IconButton icon={<FiX />} set={set} />
+          <IconButton icon={<FiX />} func={() => toggleAdding()} />
         </div>
         <div className={styles.upperCont}>
           <InputField
@@ -45,11 +48,7 @@ function AddContainer() {
         </div>
         <div className={styles.lowerCont}>
           <div className={styles.Btn}>
-            <IconButton
-              icon={<FiCheckCircle />}
-              func={addTask}
-              set={task.trim() !== "" && set}
-            />
+            <IconButton icon={<FiCheckCircle />} func={addTask} />
           </div>
         </div>
       </div>

@@ -2,6 +2,7 @@ import { useState } from "react";
 import Context from "./Context";
 
 function AppProvider({ children }) {
+  const [page, setPage] = useState(0);
   const [isAdding, setIsAdding] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
   const [specific, setSpecific] = useState(null);
@@ -32,7 +33,12 @@ function AppProvider({ children }) {
       { id: crypto.randomUUID(), text: "Sleep before 10:00pm" },
     ],
   });
-  function toggle() {
+  function togglePage(index = null) {
+    if (index !== null) {
+      setPage(index);
+    }
+  }
+  function toggleAdding() {
     setIsAdding((prev) => !prev);
   }
   function addTask(time, task) {
@@ -78,6 +84,8 @@ function AppProvider({ children }) {
     setIsEdit((prev) => !prev);
   }
   const context = {
+    togglePage: togglePage,
+    activePage: page,
     setSpecific: setS,
     specificTime: specific,
     add: addTask,
@@ -87,7 +95,7 @@ function AppProvider({ children }) {
     setData: setData,
     data: data,
     get: isAdding,
-    set: toggle,
+    toggleAdding: toggleAdding,
     toggleEdit: toggleEdit,
     isEdit: isEdit,
   };

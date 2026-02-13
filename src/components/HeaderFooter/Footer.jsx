@@ -11,43 +11,41 @@ import React, { useContext, useState } from "react";
 import Context from "../App/Context";
 function Footer() {
   const [selected, setSelected] = useState(0);
-  const { set } = useContext(Context);
-  function handleToggle(i) {
+  const { toggleAdding, togglePage } = useContext(Context);
+  function toggle(i) {
     setSelected(i);
+    togglePage(i);
   }
   return (
     <div className={styles.cont}>
-      <div className={styles.sideCont}>
-        <IconButton
-          icon={<FiList />}
-          i={0}
-          active={selected === 0}
-          toggle={handleToggle}
-        />
-        <IconButton
-          icon={<FiCalendar />}
-          i={1}
-          active={selected === 1}
-          toggle={handleToggle}
-        />
-      </div>
+      <IconButton
+        icon={<FiList />}
+        active={selected === 0}
+        func={() => toggle(0)}
+      />
+      <IconButton
+        icon={<FiCalendar />}
+        active={selected === 1}
+        func={() => toggle(1)}
+      />
+
       <div className={styles.plusCont}>
-        <IconButton icon={<FiPlusCircle size="45px" />} set={set} />
-      </div>
-      <div className={styles.sideCont}>
         <IconButton
-          icon={<FiPieChart />}
-          i={2}
-          active={selected === 2}
-          toggle={handleToggle}
-        />
-        <IconButton
-          icon={<FiUser />}
-          i={3}
-          active={selected === 3}
-          toggle={handleToggle}
+          icon={<FiPlusCircle size="45px" />}
+          func={() => toggleAdding()}
         />
       </div>
+
+      <IconButton
+        icon={<FiPieChart />}
+        active={selected === 2}
+        func={() => toggle(2)}
+      />
+      <IconButton
+        icon={<FiUser />}
+        active={selected === 3}
+        func={() => toggle(3)}
+      />
     </div>
   );
 }

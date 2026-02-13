@@ -25,3 +25,11 @@ body {
   align-items: center;
   height: 100vh;
 }
+
+.on {
+  display: block;
+}
+
+.off {
+  display: none;
+}

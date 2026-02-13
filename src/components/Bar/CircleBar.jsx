@@ -28,7 +28,7 @@ function CircleBar({ checker }) {
           active === "op2" && styles.yellow,
           active === "op3" && styles.green,
         )}
-        onClick={(e) => handleActive(e)}
+        onChange={(e) => handleActive(e)}
       />
       <input
         type="radio"
@@ -39,14 +39,14 @@ function CircleBar({ checker }) {
           active === "op2" && styles.yellow,
           active === "op3" && styles.green,
         )}
-        onClick={(e) => handleActive(e)}
+        onChange={(e) => handleActive(e)}
       />
       <input
         type="radio"
         name="barCapsule"
         value="op3"
         className={clsx(styles.capsule, active === "op3" && styles.green)}
-        onClick={(e) => handleActive(e)}
+        onChange={(e) => handleActive(e)}
       />
     </div>
   );

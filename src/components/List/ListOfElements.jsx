@@ -5,20 +5,16 @@ import React, { useContext } from "react";
 import Context from "../App/Context";
 
 function ListOfElements({ timezone, elements = [] }) {
-  const { set, setSpecific } = useContext(Context);
+  const { toggleAdding, setSpecific } = useContext(Context);
   function handleAddingTask() {
     setSpecific(timezone.toLowerCase());
+    toggleAdding();
   }
   return (
     <div className={styles.cont}>
       <div className={styles.upperCont}>
         <h3 className={styles.time}>{timezone}</h3>
-        <IconButton
-          icon={"+"}
-          func={handleAddingTask}
-          className={"addBtn"}
-          set={set}
-        />
+        <IconButton icon={"+"} func={handleAddingTask} className={"addBtn"} />
       </div>
       {elements.map((e, i) => {
         return (

@@ -22,6 +22,8 @@
 }
 
 .upperCont button {
+    border-top: solid 1px #eeeeeedd;
+    border-bottom: solid 1px #eeeeee25;
     font-size: 1.5rem;
     height: 30px;
 }

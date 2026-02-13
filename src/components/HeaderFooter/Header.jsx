@@ -9,7 +9,7 @@ function Header() {
     <div className={styles.cont}>
       <h1 className={styles.title}>Checks Me</h1>
       <div className={styles.rightCont}>
-        <IconButton icon={<FiEdit />} set={toggleEdit} />
+        <IconButton icon={<FiEdit />} func={toggleEdit} />
         <IconButton icon={<FiBell />} />
       </div>
     </div>
