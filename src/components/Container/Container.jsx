@@ -4,10 +4,16 @@ import React, { useContext } from "react";
 import Context from "../App/Context";
 import clsx from "clsx";
 function Container() {
-  const { get } = useContext(Context);
+  const { isAdding } = useContext(Context);
 
   return (
-    <div className={clsx(styles.cont, get && styles.show, !get && styles.hide)}>
+    <div
+      className={clsx(
+        styles.cont,
+        isAdding && styles.show,
+        !isAdding && styles.hide,
+      )}
+    >
       <AddContainer />
     </div>
   );

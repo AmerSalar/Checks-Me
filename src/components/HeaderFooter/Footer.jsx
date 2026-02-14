@@ -11,10 +11,17 @@ import React, { useContext, useState } from "react";
 import Context from "../App/Context";
 function Footer() {
   const [selected, setSelected] = useState(0);
-  const { toggleAdding, togglePage } = useContext(Context);
+  const { toggleAdding, togglePage, isAdding } = useContext(Context);
   function toggle(i) {
     setSelected(i);
     togglePage(i);
+  }
+  function handleAddButton() {
+    if (isAdding && selected !== 0) {
+      toggleAdding();
+    }
+    toggleAdding();
+    toggle(0);
   }
   return (
     <div className={styles.cont}>
@@ -32,7 +39,7 @@ function Footer() {
       <div className={styles.plusCont}>
         <IconButton
           icon={<FiPlusCircle size="45px" />}
-          func={() => toggleAdding()}
+          func={() => handleAddButton()}
         />
       </div>
 

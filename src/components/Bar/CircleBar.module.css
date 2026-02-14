@@ -16,6 +16,7 @@
 }
 
 .capsule {
+    -webkit-tap-highlight-color: transparent;
     cursor: pointer;
     appearance: none;
     -webkit-appearance: none;
@@ -26,6 +27,7 @@
     background: linear-gradient(hsl(0, 0%, 30%), var(--bg-secondary));
     border-radius: 5px;
     transform: scale(1.2);
+
 }
 
 .capsule:hover {

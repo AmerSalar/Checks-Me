@@ -2,6 +2,7 @@
   --bg: hsl(0, 0%, 5%);
   --bg-secondary: hsl(0, 0%, 10%);
   --bg-extra: hsl(0, 0%, 15%);
+  --bg-extra-secondary: hsl(0, 0%, 20%);
   --text-main: hsl(0, 0%, 95%);
   --text-alt: hsl(0, 0%, 85%);
   --main: hsl(222, 50%, 50%);
@@ -24,6 +25,7 @@
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: var(--bg);
+  overscroll-behavior-y: none;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -34,11 +36,13 @@
 
 
 body {
+  overscroll-behavior-y: none;
   margin: 0%;
   padding: 0%;
 }
 
 .app-container {
+  overscroll-behavior: none;
   display: flex;
   justify-content: center;
   align-items: center;

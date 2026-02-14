@@ -1,10 +1,15 @@
 import styles from "./InputField.module.css";
-import { _ } from "react";
+import {} from "react";
 import clsx from "clsx";
 
 function InputField({ holder, setT, t, specificTime = null }) {
+  const focusInput = (e) => {
+    if (e) e.focus();
+  };
   return (
     <input
+      autoFocus
+      ref={focusInput}
       type="text"
       className={clsx(
         styles.cont,

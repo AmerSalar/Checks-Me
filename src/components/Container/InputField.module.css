@@ -1,6 +1,6 @@
 .cont {
-    background-color: #444;
-    color: #ddd;
+    background-color: var(--bg-extra-secondary);
+    color: var(--text-main);
     width: 55%;
     border: none;
     border-radius: 20px;
@@ -8,7 +8,7 @@
 }
 
 .cont:focus {
-    outline: solid 2px rgb(40, 115, 185);
+    outline: solid 2px var(--light-main);
 }
 
 .alone {

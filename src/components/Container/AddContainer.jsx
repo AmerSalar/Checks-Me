@@ -6,7 +6,7 @@ import { FiCheckCircle, FiX } from "react-icons/fi";
 import { useContext, useEffect, useState } from "react";
 import Context from "../App/Context";
 function AddContainer() {
-  const { toggleAdding, add, specificTime, setSpecific, get } =
+  const { toggleAdding, add, specificTime, setSpecific, isAdding } =
     useContext(Context);
   const [task, setTask] = useState("");
   const [time, setTime] = useState("morning");
@@ -29,8 +29,8 @@ function AddContainer() {
       setTask("");
       setTime("morning");
     }
-    if (get === false) resetinputs();
-  }, [get, setSpecific]);
+    if (isAdding === false) resetinputs();
+  }, [isAdding, setSpecific]);
   return (
     <>
       <div className={styles.cont}>

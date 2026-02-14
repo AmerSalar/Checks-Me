@@ -2,14 +2,14 @@
     border-radius: 30px;
     padding: 10px;
     border: none;
-    background-color: #444;
-    color: white;
+    background-color: var(--bg-extra-secondary);
+    color: var(--text-main);
     transform: translateX(6px);
     padding: 5px;
 }
 
 .cont:focus {
-    outline: solid 2px rgb(40, 115, 185);
+    outline: solid 2px var(--light-main);
 }
 
 .show {
