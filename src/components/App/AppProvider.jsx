@@ -42,7 +42,7 @@ function AppProvider({ children, page, setPage, setYear, setMonth }) {
         setPage(-1);
         const docRef = doc(db, "users", "Ameer-dev");
         const snapshot = await getDoc(docRef);
-        sleep(1000);
+        await sleep(2000);
         setPage(0);
 
         if (snapshot.exists()) {

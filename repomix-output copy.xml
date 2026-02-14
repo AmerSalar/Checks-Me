@@ -61,6 +61,182 @@ src/components/Calendar/Calendar.jsx
 src/components/Calendar/Calendar.module.css
 src/components/Calendar/Day.jsx
 src/components/Calendar/Day.module.css
+src/components/Calendar/MonthChanger.jsx
+src/components/Calendar/MonthChanger.module.css
+src/components/Container/AddContainer.jsx
+src/components/Container/AddContainer.module.css
+src/components/Container/Container.jsx
+src/components/Container/Container.module.css
+src/components/Container/DropDown.jsx
+src/components/Container/DropDown.module.css
+src/components/Container/InputField.jsx
+src/components/Container/InputField.module.css
+src/components/Container/ListContainer.jsx
+src/components/Container/ListContainer.module.css
+src/components/HeaderFooter/Footer.jsx
+src/components/HeaderFooter/Footer.module.css
+src/components/HeaderFooter/Header.jsx
+src/components/HeaderFooter/Header.module.css
+src/components/List/ListElement.jsx
+src/components/List/ListElement.module.css
+src/components/List/ListOfElements.jsx
+src/components/List/ListOfElements.module.css
+src/components/List/ListOfLists.jsx
+src/components/List/ListOfLists.module.css
+src/index.css
+src/main.jsx
+vite.config.js
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path=".gitignore">
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+</file>
+
+<file path="eslint.config.js">
+import js from '@eslint/js'
+import globals from 'globals'
+import reactHooks from 'eslint-plugin-react-hooks'
+import reactRefresh from 'eslint-plugin-react-refresh'
+import { defineConfig, globalIgnores } from 'eslint/config'
+
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{js,jsx}'],
+    extends: [
+      js.configs.recommended,
+      reactHooks.configs.flat.recommended,
+      reactRefresh.configs.vite,
+    ],
+    languageOptions: {
+      ecmaVersion: 2020,
+      globals: globals.browser,
+      parserOptions: {
+        ecmaVersion: 'latest',
+        ecmaFeatures: { jsx: true },
+        sourceType: 'module',
+      },
+    },
+    rules: {
+      'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
+    },
+  },
+])
+</file>
+
+<file path="public/vite.svg">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--logos" width="31.88" height="32" preserveAspectRatio="xMidYMid meet" viewBox="0 0 256 257"><defs><linearGradient id="IconifyId1813088fe1fbc01fb466" x1="-.828%" x2="57.636%" y1="7.652%" y2="78.411%"><stop offset="0%" stop-color="#41D1FF"></stop><stop offset="100%" stop-color="#BD34FE"></stop></linearGradient><linearGradient id="IconifyId1813088fe1fbc01fb467" x1="43.376%" x2="50.316%" y1="2.242%" y2="89.03%"><stop offset="0%" stop-color="#FFEA83"></stop><stop offset="8.333%" stop-color="#FFDD35"></stop><stop offset="100%" stop-color="#FFA800"></stop></linearGradient></defs><path fill="url(#IconifyId1813088fe1fbc01fb466)" d="M255.153 37.938L134.897 252.976c-2.483 4.44-8.862 4.466-11.382.048L.875 37.958c-2.746-4.814 1.371-10.646 6.827-9.67l120.385 21.517a6.537 6.537 0 0 0 2.322-.004l117.867-21.483c5.438-.991 9.574 4.796 6.877 9.62Z"></path><path fill="url(#IconifyId1813088fe1fbc01fb467)" d="M185.432.063L96.44 17.501a3.268 3.268 0 0 0-2.634 3.014l-5.474 92.456a3.268 3.268 0 0 0 3.997 3.378l24.777-5.718c2.318-.535 4.413 1.507 3.936 3.838l-7.361 36.047c-.495 2.426 1.782 4.5 4.151 3.78l15.304-4.649c2.372-.72 4.652 1.36 4.15 3.788l-11.698 56.621c-.732 3.542 3.979 5.473 5.943 2.437l1.313-2.028l72.516-144.72c1.215-2.423-.88-5.186-3.54-4.672l-25.505 4.922c-2.396.462-4.435-1.77-3.759-4.114l16.646-57.705c.677-2.35-1.37-4.583-3.769-4.113Z"></path></svg>
+</file>
+
+<file path="README.md">
+# React + Vite
+
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+
+Currently, two official plugins are available:
+
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+## React Compiler
+
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+
+## Expanding the ESLint configuration
+
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+</file>
+
+<file path="repomix-output copy.xml">
+This file is a merged representation of the entire codebase, combined into a single document by Repomix.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of the entire repository's contents.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+.gitignore
+eslint.config.js
+index.html
+package.json
+public/vite.svg
+README.md
+repomix-output copy.xml
+src.zip
+src/App.jsx
+src/components/App/AppProvider.jsx
+src/components/App/Context.jsx
+src/components/Bar/CircleBar.jsx
+src/components/Bar/CircleBar.module.css
+src/components/Bar/EditBar.jsx
+src/components/Bar/EditBar.module.css
+src/components/Buttons/Buttons.module.css
+src/components/Buttons/IconButton.jsx
+src/components/Calendar/Calendar.jsx
+src/components/Calendar/Calendar.module.css
+src/components/Calendar/Day.jsx
+src/components/Calendar/Day.module.css
 src/components/Container/AddContainer.jsx
 src/components/Container/AddContainer.module.css
 src/components/Container/Container.jsx
@@ -2639,6 +2815,1412 @@ function IconButton({ icon, func = null, active = false }) {
       onClick={(e) => handle(e)}
     >
       {icon}
+    </button>
+  );
+}
+export default IconButton;
+</file>
+
+</files>
+</file>
+
+<file path="src/components/App/Context.jsx">
+import React, { createContext } from "react";
+const Context = createContext();
+export default Context;
+</file>
+
+<file path="src/components/Bar/EditBar.module.css">
+.cont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 25px;
+  /* border: solid 1px white; */
+  border-radius: 25px;
+}
+
+.show {
+  display: flex;
+}
+
+.hide {
+  display: none;
+}
+
+.cont button {
+  height: 33px;
+  margin: 0;
+  width: 33px;
+  transform: translateY(2px);
+  scale: 0.8;
+}
+
+.cont button:last-child {
+  color: #dd3d3d;
+}
+</file>
+
+<file path="src/components/Calendar/MonthChanger.jsx">
+import IconButton from "../Buttons/IconButton";
+import styles from "./MonthChanger.module.css";
+import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
+import { useContext } from "react";
+import Context from "../App/Context";
+
+function MonthChanger({ year = null, month = null }) {
+  const { setYear, setMonth } = useContext(Context);
+  const months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+  function nextMonth() {
+    if (month === 12) {
+      setMonth(1);
+      setYear((prev) => prev + 1);
+    } else {
+      setMonth((prev) => prev + 1);
+    }
+  }
+  function prevMonth() {
+    if (month === 1) {
+      setMonth(12);
+      setYear((prev) => prev - 1);
+    } else {
+      setMonth((prev) => prev - 1);
+    }
+  }
+  return (
+    <div className={styles.cont}>
+      <IconButton icon={<FiArrowLeft />} func={prevMonth} />
+      <h1>
+        {year} - {months[month - 1]}
+      </h1>
+      <IconButton icon={<FiArrowRight />} func={nextMonth} />
+    </div>
+  );
+}
+export default MonthChanger;
+</file>
+
+<file path="src/components/Calendar/MonthChanger.module.css">
+.cont {
+  height: 20px;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  /* border: solid 1px white; */
+}
+
+.cont h1 {
+  font-size: 0.75rem;
+}
+
+.cont button {
+  transform: translateY(3px);
+  height: 20px;
+  width: 20px;
+  /* background-color: rgba(0, 255, 255, 0.171); */
+  font-size: 1rem;
+}
+</file>
+
+<file path="src/components/Container/Container.jsx">
+import styles from "./Container.module.css";
+import AddContainer from "./AddContainer";
+import React, { useContext } from "react";
+import Context from "../App/Context";
+import clsx from "clsx";
+function Container() {
+  const { get } = useContext(Context);
+
+  return (
+    <div className={clsx(styles.cont, get && styles.show, !get && styles.hide)}>
+      <AddContainer />
+    </div>
+  );
+}
+export default Container;
+</file>
+
+<file path="src/components/Container/ListContainer.jsx">
+import styles from "./ListContainer.module.css";
+import clsx from "clsx";
+import Container from "./Container";
+import ListOfLists from "../List/ListOfLists";
+import {} from "react";
+function ListContainer({ active }) {
+  return (
+    <div
+      className={clsx(
+        styles.cont,
+        !active && styles.hide,
+        active && styles.show,
+      )}
+    >
+      <Container />
+      <ListOfLists />
+    </div>
+  );
+}
+export default ListContainer;
+</file>
+
+<file path="src/main.jsx">
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import "./index.css";
+import App from "./App.jsx";
+
+createRoot(document.getElementById("root")).render(
+  <StrictMode>
+    <App />
+  </StrictMode>,
+);
+</file>
+
+<file path="vite.config.js">
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+
+// https://vite.dev/config/
+export default defineConfig({
+  base: "/Checks-Me/",
+  plugins: [react()],
+});
+</file>
+
+<file path="index.html">
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checks Me</title>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+
+</html>
+</file>
+
+<file path="package.json">
+{
+  "name": "checks-me",
+  "homepage": "https://amersalar.github.io/Checks-Me",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "prop-types": "^15.8.1",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-icons": "^5.5.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.1",
+    "@types/react": "^19.2.5",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^5.1.1",
+    "eslint": "^9.39.1",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "eslint-plugin-react-refresh": "^0.4.24",
+    "gh-pages": "^6.3.0",
+    "globals": "^16.5.0",
+    "vite": "^7.2.4"
+  }
+}
+</file>
+
+<file path="src/components/Bar/EditBar.jsx">
+import styles from "./EditBar.module.css";
+import IconButton from "../Buttons/IconButton";
+import { FiTrash, FiArrowUp, FiArrowDown } from "react-icons/fi";
+import clsx from "clsx";
+import { useContext } from "react";
+import Context from "../App/Context";
+function EditBar({ eId, eTime, eIndex }) {
+  const { isEdit, del = null, up, down } = useContext(Context);
+
+  function deleteTask() {
+    if (del !== null) {
+      del(eId, eTime);
+    }
+  }
+  function moveUp() {
+    up(eIndex, eTime);
+  }
+  function moveDown() {
+    down(eIndex, eTime);
+  }
+  return (
+    <div
+      className={clsx(
+        styles.cont,
+        isEdit && styles.show,
+        !isEdit && styles.hide,
+      )}
+    >
+      <IconButton icon={<FiArrowDown />} func={moveDown} />
+      <IconButton icon={<FiArrowUp />} func={moveUp} />
+      <IconButton
+        icon={<FiTrash />}
+        className={styles.trash}
+        func={deleteTask}
+      />
+    </div>
+  );
+}
+export default EditBar;
+</file>
+
+<file path="src/components/Calendar/Day.jsx">
+import styles from "./Day.module.css";
+import clsx from "clsx";
+function Day({ number = "", text = "", today = false }) {
+  return (
+    <div className={clsx(styles.cont, today && styles.today)}>
+      <h2>{number}</h2>
+      <p>{text}</p>
+    </div>
+  );
+}
+export default Day;
+</file>
+
+<file path="src/components/Container/Container.module.css">
+.cont {
+    height: 40vh;
+    width: 100%;
+    max-width: 500px;
+    min-width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+    position: absolute;
+    transform: translateY(-5dvh);
+}
+
+.show {
+    display: flex;
+}
+
+.hide {
+    display: none;
+}
+</file>
+
+<file path="src/components/Container/ListContainer.module.css">
+.show {
+    width: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hide {
+    display: none;
+}
+</file>
+
+<file path="src/components/Bar/CircleBar.jsx">
+import styles from "./CircleBar.module.css";
+import clsx from "clsx";
+import React, { useState, useContext } from "react";
+import Context from "../App/Context";
+function CircleBar({ checker }) {
+  const { isEdit } = useContext(Context);
+  const [active, setActive] = useState(null);
+  function handleActive(e) {
+    setActive(e.target.value);
+    checker(true);
+  }
+  return (
+    <div
+      className={clsx(
+        styles.cont,
+        isEdit && styles.hide,
+        !isEdit && styles.show,
+      )}
+    >
+      <p></p>
+      <input
+        type="radio"
+        name="barCapsule"
+        value="op1"
+        className={clsx(
+          styles.capsule,
+          active === "op1" && styles.red,
+          active === "op2" && styles.yellow,
+          active === "op3" && styles.green,
+        )}
+        onChange={(e) => handleActive(e)}
+      />
+      <input
+        type="radio"
+        name="barCapsule"
+        value="op2"
+        className={clsx(
+          styles.capsule,
+          active === "op2" && styles.yellow,
+          active === "op3" && styles.green,
+        )}
+        onChange={(e) => handleActive(e)}
+      />
+      <input
+        type="radio"
+        name="barCapsule"
+        value="op3"
+        className={clsx(styles.capsule, active === "op3" && styles.green)}
+        onChange={(e) => handleActive(e)}
+      />
+    </div>
+  );
+}
+export default CircleBar;
+</file>
+
+<file path="src/components/Calendar/Calendar.jsx">
+import styles from "./Calendar.module.css";
+import Day from "./Day";
+import { useEffect, useState } from "react";
+import IconButton from "../Buttons/IconButton";
+import MonthChanger from "./MonthChanger";
+import clsx from "clsx";
+
+function Calendar({ year, month, active = true }) {
+  const thisYearMonth =
+    new Date().getFullYear() === year && new Date().getMonth() + 1 === month;
+  const today = new Date().getDate();
+  const [days, setDays] = useState([]);
+  const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  useEffect(() => {
+    function getDays(year, month) {
+      const firstDay = new Date(year, month - 1, 1).getDay();
+      const totalDays = new Date(year, month, 0).getDate();
+      const array = [];
+      for (let i = 0; i < firstDay; i++) {
+        array.push(0);
+      }
+      for (let i = 1; i <= totalDays; i++) {
+        array.push(i);
+      }
+
+      setDays(array);
+    }
+
+    getDays(year, month);
+  }, [month, year]);
+  return (
+    <>
+      <div
+        className={clsx(
+          styles.cont,
+          active && styles.show,
+          !active && styles.hide,
+        )}
+      >
+        <MonthChanger year={year} month={month} />
+        <div className={styles.weeksCont}>
+          {weekdays.map((e, i) => (
+            <h3 key={i}>{e}</h3>
+          ))}
+        </div>
+        <div className={styles.daysCont}>
+          {days.map((e, i) => {
+            if (e === 0) return <div key={i}></div>;
+            else
+              return (
+                <Day
+                  number={e}
+                  key={i}
+                  text=""
+                  today={thisYearMonth && today === e}
+                />
+              );
+          })}
+        </div>
+      </div>
+    </>
+  );
+}
+export default Calendar;
+</file>
+
+<file path="src/components/Calendar/Calendar.module.css">
+.cont {
+    background-color: var(--bg-secondary);
+    height: fit-content;
+    box-shadow: 0px 0px 10px #00000050;
+    border-radius: 25px;
+    padding: 10px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.show {
+    display: block;
+}
+
+.hide {
+    display: none;
+}
+
+.cont h3 {
+    color: var(--text-main);
+    font-size: 0.5rem;
+    text-align: center;
+    width: 40px;
+    margin: 0%;
+}
+
+.weeksCont {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+.daysCont {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    gap: 5px;
+}
+</file>
+
+<file path="src/components/Calendar/Day.module.css">
+.cont {
+    display: flex;
+    flex-direction: column;
+    width: 40px;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 2px 5px #00000050;
+    border-radius: 10px;
+    background-color: var(--bg-extra);
+}
+
+.cont h2 {
+    transform: translateY();
+    font-size: 0.75rem;
+    margin: 0%;
+}
+
+.cont p {
+    position: absolute;
+    transform: translateY(10px);
+    margin: 0%;
+    font-size: 0.33rem;
+    color: var(--text-main);
+}
+
+.today {
+    box-shadow: 0px 0px 10px var(--lighter-main);
+    outline: solid 1px var(--light-main);
+}
+</file>
+
+<file path="src/components/Container/DropDown.jsx">
+import IconButton from "../Buttons/IconButton";
+import styles from "./DropDown.module.css";
+import React, { _ } from "react";
+import clsx from "clsx";
+function DropDown({ t, setT, specificTime = null }) {
+  function setTime(e) {
+    setT(e.target.value);
+  }
+  return (
+    <>
+      <select
+        className={clsx(
+          styles.cont,
+          !specificTime && styles.show,
+          specificTime && styles.hide,
+        )}
+        value={specificTime || t}
+        onChange={(e) => setTime(e)}
+      >
+        <option value="morning">Morning</option>
+        <option value="midday">Midday</option>
+        <option value="afternoon">Afternoon</option>
+        <option value="evening">Evening</option>
+        <option value="night">Night</option>
+      </select>
+    </>
+  );
+}
+export default DropDown;
+</file>
+
+<file path="src/components/Container/InputField.jsx">
+import styles from "./InputField.module.css";
+import { _ } from "react";
+import clsx from "clsx";
+
+function InputField({ holder, setT, t, specificTime = null }) {
+  return (
+    <input
+      type="text"
+      className={clsx(
+        styles.cont,
+        specificTime && styles.alone,
+        !specificTime && styles.notAlone,
+      )}
+      placeholder={holder}
+      value={t}
+      onChange={(e) => {
+        setT(e.target.value);
+      }}
+    />
+  );
+}
+
+export default InputField;
+</file>
+
+<file path="src/components/Container/InputField.module.css">
+.cont {
+    background-color: #444;
+    color: #ddd;
+    width: 55%;
+    border: none;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.cont:focus {
+    outline: solid 2px rgb(40, 115, 185);
+}
+
+.alone {
+    width: 90%;
+}
+
+.notAlone {
+    width: 55%;
+}
+</file>
+
+<file path="src/components/List/ListElement.jsx">
+import Bar from "../Bar/CircleBar";
+import EditBar from "../Bar/EditBar";
+import styles from "./ListElement.module.css";
+import React, { useState } from "react";
+
+function ListElement(props) {
+  const [check, setCheck] = useState(false);
+  let text = props.text;
+  if (check) text = <del>{props.text}</del>;
+  return (
+    <div className={styles.cont}>
+      <h3>{text}</h3>
+      <Bar checker={setCheck} />
+      <EditBar eId={props.eId} eTime={props.eTime} eIndex={props.eIndex} />
+    </div>
+  );
+}
+export default ListElement;
+</file>
+
+<file path="src/components/List/ListElement.module.css">
+.cont {
+    background-color: var(--bg-extra);
+    color: var(--text-alt);
+    width: inherit;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: min-content;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+h3 {
+    margin-left: 5px;
+    font-size: 0.625rem;
+}
+</file>
+
+<file path="src/components/List/ListOfLists.jsx">
+import ListOfElements from "./ListOfElements";
+import styles from "./ListOfLists.module.css";
+import clsx from "clsx";
+import { useContext } from "react";
+import Context from "../App/Context";
+function ListOfLists() {
+  const { get, data } = useContext(Context);
+  return (
+    <div className={clsx(styles.cont, !get && styles.show, get && styles.hide)}>
+      <ListOfElements timezone="Morning" elements={data.morning} />
+      <ListOfElements timezone="Midday" elements={data.midday} />
+      <ListOfElements timezone="Afternoon" elements={data.afternoon} />
+      <ListOfElements timezone="Evening" elements={data.evening} />
+      <ListOfElements timezone="Night" elements={data.night} />
+    </div>
+  );
+}
+
+export default ListOfLists;
+</file>
+
+<file path="src/components/Bar/CircleBar.module.css">
+.cont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 25px;
+    /* border: solid 1px white; */
+    border-radius: 10px;
+}
+
+.show {
+    display: flex;
+}
+
+.hide {
+    display: none;
+}
+
+.capsule {
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    width: 26px;
+    height: 16px;
+    margin: 3px;
+    /* border: solid 1px hsl(0, 0%, 20%); */
+    background: linear-gradient(hsl(0, 0%, 30%), var(--bg-secondary));
+    border-radius: 5px;
+    transform: scale(1.2);
+}
+
+.capsule:hover {
+    background: linear-gradient(180deg, hsl(0, 0%, 35%), var(--bg-extra));
+}
+
+.red {
+    background: linear-gradient(180deg, hsl(0, 45%, 40%), hsl(0, 65%, 15%)) !important;
+}
+
+.yellow {
+    background: linear-gradient(180deg, hsl(50, 50%, 50%), hsl(50, 70%, 10%)) !important;
+}
+
+.green {
+    background: linear-gradient(180deg, hsl(110, 60%, 50%), hsl(110, 70%, 10%)) !important;
+}
+</file>
+
+<file path="src/components/Container/AddContainer.module.css">
+.cont {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: hsl(0, 0%, 20%);
+    box-shadow: 0px 3px 5px hsla(0, 0%, 0%, 0.3);
+    border-top: solid 2px hsla(0, 0%, 100%, 0.3);
+    height: 35dvh;
+    width: 90%;
+    border-radius: 50px;
+    /* border: solid 2px white; */
+}
+
+.lowerCont {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 25px;
+}
+
+.Btn button {
+    width: 150px;
+    padding: 5px;
+    background-color: var(--main);
+    border-radius: 15px;
+}
+
+.Btn button:active {
+    background-color: var(--light-main);
+}
+
+.cancel {
+    width: inherit;
+    display: flex;
+    justify-content: end;
+    padding-right: 20px;
+    position: absolute;
+    top: 30px;
+}
+
+.upperCont {
+    margin-top: 20px;
+}
+</file>
+
+<file path="src/components/Container/DropDown.module.css">
+.cont {
+    border-radius: 30px;
+    padding: 10px;
+    border: none;
+    background-color: #444;
+    color: white;
+    transform: translateX(6px);
+    padding: 5px;
+}
+
+.cont:focus {
+    outline: solid 2px rgb(40, 115, 185);
+}
+
+.show {
+    display: auto;
+}
+
+.hide {
+    display: none;
+}
+</file>
+
+<file path="src/components/HeaderFooter/Footer.module.css">
+.cont {
+    background-color: var(--bg);
+    position: fixed;
+    bottom: 0%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 60px;
+    width: 100%;
+    padding: 0%;
+    z-index: 2;
+}
+
+
+.plusCont {
+
+    margin-bottom: -5px;
+    background-color: var(--main);
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+}
+
+.plusCont button {
+    margin: 0%;
+    margin-top: 5px;
+    width: 60px;
+    height: 60px;
+
+}
+</file>
+
+<file path="src/components/List/ListOfLists.module.css">
+.cont {
+    width: 100%;
+    height: 85dvh;
+    overflow: scroll;
+    margin: 0%;
+
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.cont::-webkit-scrollbar {
+    display: none;
+}
+
+.show {
+    filter: none;
+}
+
+.hide {
+    filter: blur(2px);
+}
+</file>
+
+<file path="src/index.css">
+:root {
+  --bg: hsl(0, 0%, 5%);
+  --bg-secondary: hsl(0, 0%, 10%);
+  --bg-extra: hsl(0, 0%, 15%);
+  --text-main: hsl(0, 0%, 95%);
+  --text-alt: hsl(0, 0%, 85%);
+  --main: hsl(222, 50%, 50%);
+  --light-main: hsl(222, 50%, 60%);
+  --lighter-main: hsl(222, 50%, 65%);
+
+  /* --bg: hsl(0, 0%, 95%);
+  --bg-secondary: hsl(0, 0%, 85%);
+  --bg-extra: hsl(0, 0%, 90%);
+  --text-main: hsl(0, 0%, 5%);
+  --text-alt: hsl(0, 0%, 15%);
+  --main-blue: hsl(222, 50%, 50%);
+  --light-blue: hsl(222, 50%, 40%);
+  --lighter-blue: hsl(222, 50%, 35%); */
+
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: var(--bg);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+}
+
+
+body {
+  margin: 0%;
+  padding: 0%;
+}
+
+.app-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.on {
+  display: block;
+}
+
+.off {
+  display: none;
+}
+</file>
+
+<file path="src/components/Container/AddContainer.jsx">
+import styles from "./AddContainer.module.css";
+import DropDown from "./DropDown";
+import InputField from "./InputField";
+import IconButton from "../Buttons/IconButton";
+import { FiCheckCircle, FiX } from "react-icons/fi";
+import { useContext, useEffect, useState } from "react";
+import Context from "../App/Context";
+function AddContainer() {
+  const { toggleAdding, add, specificTime, setSpecific, get } =
+    useContext(Context);
+  const [task, setTask] = useState("");
+  const [time, setTime] = useState("morning");
+
+  function addTask() {
+    if (task.trim() !== "") {
+      if (specificTime) {
+        add(specificTime, task);
+      } else {
+        add(time, task);
+      }
+
+      toggleAdding();
+    }
+  }
+
+  useEffect(() => {
+    function resetinputs() {
+      setSpecific(null);
+      setTask("");
+      setTime("morning");
+    }
+    if (get === false) resetinputs();
+  }, [get, setSpecific]);
+  return (
+    <>
+      <div className={styles.cont}>
+        <div className={styles.cancel}>
+          <IconButton icon={<FiX />} func={() => toggleAdding()} />
+        </div>
+        <div className={styles.upperCont}>
+          <InputField
+            holder={"Enter a task..."}
+            setT={setTask}
+            t={task}
+            specificTime={specificTime}
+          />
+          <DropDown setT={setTime} t={time} specificTime={specificTime} />
+        </div>
+        <div className={styles.lowerCont}>
+          <div className={styles.Btn}>
+            <IconButton icon={<FiCheckCircle />} func={addTask} />
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}
+export default AddContainer;
+</file>
+
+<file path="src/components/HeaderFooter/Header.module.css">
+.cont {
+    background-color: var(--bg);
+    position: fixed;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 60px;
+    z-index: 2;
+}
+
+.title {
+    margin-left: 15px;
+    font-family: sans-serif;
+    font-size: 0.75rem;
+}
+
+.rightCont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(5px);
+    margin-right: 10px;
+    width: 85px;
+    height: 35px;
+}
+
+.rightCont button {
+    position: absolute;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    margin: 0%;
+    font-size: 1.25rem;
+}
+
+.editBtn {
+    width: 70px;
+    height: 30px;
+}
+
+.editBtn button {
+    height: inherit;
+    justify-content: center;
+    align-items: center;
+    width: inherit;
+    transform: translate(-50px, -8px);
+    display: flex;
+    background-color: var(--bg-secondary);
+}
+
+.showEdit {
+    display: block;
+}
+
+.hideEdit {
+    display: none;
+}
+</file>
+
+<file path="src/components/List/ListOfElements.module.css">
+.cont {
+    background-color: var(--bg-secondary);
+    margin: 5px;
+    border-radius: 10px;
+    padding: 3%;
+}
+
+.time {
+    color: var(--text-main);
+    padding-left: 10px;
+    width: 100%;
+    align-content: center;
+    border-radius: 5px;
+}
+
+.upperCont {
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--main);
+    border-radius: 10px;
+}
+
+.upperCont button {
+    background-color: var(--light-main);
+    font-size: 1.5rem;
+    height: 30px;
+}
+</file>
+
+<file path="src/App.jsx">
+import Header from "./components/HeaderFooter/Header";
+import Footer from "./components/HeaderFooter/Footer";
+import AppProvider from "./components/App/AppProvider";
+import Calendar from "./components/Calendar/Calendar";
+import ListContainer from "./components/Container/ListContainer";
+import { useState } from "react";
+function App() {
+  const [year, setYear] = useState(new Date().getFullYear());
+  const [month, setMonth] = useState(new Date().getMonth() + 1);
+  const [activePage, setActivePage] = useState(0);
+
+  return (
+    <>
+      <AppProvider
+        page={activePage}
+        setPage={setActivePage}
+        setYear={setYear}
+        setMonth={setMonth}
+      >
+        <Header />
+        <div className="app-container">
+          <ListContainer active={activePage === 0} />
+          <Calendar year={year} month={month} active={activePage === 1} />
+        </div>
+
+        <Footer />
+      </AppProvider>
+    </>
+  );
+}
+export default App;
+</file>
+
+<file path="src/components/Buttons/Buttons.module.css">
+.icon {
+    -webkit-tap-highlight-color: transparent;
+    cursor: pointer;
+    background: transparent;
+    color: #ccc;
+    border: none;
+    border-radius: 40px;
+    width: 50px;
+    height: 50px;
+    padding: 0px;
+    font-size: 1.5rem;
+    margin: 5px;
+}
+
+.icon p {
+    font-size: 0.6rem;
+    margin-left: 5px;
+}
+
+.icon:hover {
+    color: #eee;
+}
+
+
+.on {
+    color: var(--light-main);
+
+}
+
+.on:hover {
+    color: var(--lighter-main);
+}
+
+.off {
+    color: #ccc;
+}
+</file>
+
+<file path="src/components/HeaderFooter/Footer.jsx">
+import styles from "./Footer.module.css";
+import IconButton from "../Buttons/IconButton";
+import {
+  FiList,
+  FiUser,
+  FiPlusCircle,
+  FiCalendar,
+  FiPieChart,
+} from "react-icons/fi";
+import React, { useContext, useState } from "react";
+import Context from "../App/Context";
+function Footer() {
+  const [selected, setSelected] = useState(0);
+  const { toggleAdding, togglePage } = useContext(Context);
+  function toggle(i) {
+    setSelected(i);
+    togglePage(i);
+  }
+  return (
+    <div className={styles.cont}>
+      <IconButton
+        icon={<FiList />}
+        active={selected === 0}
+        func={() => toggle(0)}
+      />
+      <IconButton
+        icon={<FiCalendar />}
+        active={selected === 1}
+        func={() => toggle(1)}
+      />
+
+      <div className={styles.plusCont}>
+        <IconButton
+          icon={<FiPlusCircle size="45px" />}
+          func={() => toggleAdding()}
+        />
+      </div>
+
+      <IconButton
+        icon={<FiPieChart />}
+        active={selected === 2}
+        func={() => toggle(2)}
+      />
+      <IconButton
+        icon={<FiUser />}
+        active={selected === 3}
+        func={() => toggle(3)}
+      />
+    </div>
+  );
+}
+export default Footer;
+</file>
+
+<file path="src/components/List/ListOfElements.jsx">
+import styles from "./ListOfElements.module.css";
+import ListElement from "./ListElement";
+import IconButton from "../Buttons/IconButton";
+import React, { useContext } from "react";
+import Context from "../App/Context";
+
+function ListOfElements({ timezone, elements = [] }) {
+  const { toggleAdding, setSpecific } = useContext(Context);
+  function handleAddingTask() {
+    setSpecific(timezone.toLowerCase());
+    toggleAdding();
+  }
+  return (
+    <div className={styles.cont}>
+      <div className={styles.upperCont}>
+        <h3 className={styles.time}>{timezone}</h3>
+        <IconButton icon={"+"} func={handleAddingTask} className={"addBtn"} />
+      </div>
+      {elements.map((e, i) => {
+        return (
+          <ListElement
+            key={e.id}
+            text={e.text}
+            eId={e.id}
+            eTime={timezone.toLowerCase()}
+            eIndex={i}
+          />
+        );
+      })}
+    </div>
+  );
+}
+export default ListOfElements;
+</file>
+
+<file path="src/components/App/AppProvider.jsx">
+import { useState } from "react";
+import Context from "./Context";
+
+function AppProvider({ children, page, setPage, setYear, setMonth }) {
+  const [isAdding, setIsAdding] = useState(false);
+  const [isEdit, setIsEdit] = useState(false);
+  const [specific, setSpecific] = useState(null);
+  const [data, setData] = useState({
+    morning: [
+      { id: crypto.randomUUID(), text: "Wake up early" },
+      { id: crypto.randomUUID(), text: "Pray Fajr" },
+      { id: crypto.randomUUID(), text: "Eat breakfast" },
+    ],
+    midday: [
+      { id: crypto.randomUUID(), text: "Pray Dhuhr" },
+      { id: crypto.randomUUID(), text: "Eat lunch" },
+      { id: crypto.randomUUID(), text: "Study session for 30 mins" },
+    ],
+    afternoon: [
+      { id: crypto.randomUUID(), text: "Pray Asir" },
+      { id: crypto.randomUUID(), text: "Workout session" },
+      { id: crypto.randomUUID(), text: "Walk outside for 30 mins" },
+    ],
+    evening: [
+      { id: crypto.randomUUID(), text: "Pray Maghrib" },
+      { id: crypto.randomUUID(), text: "Eat dinner" },
+    ],
+    night: [
+      { id: crypto.randomUUID(), text: "Pray Isha" },
+      { id: crypto.randomUUID(), text: "Read or listen to educationals" },
+      { id: crypto.randomUUID(), text: "Study session for 30 mins" },
+      { id: crypto.randomUUID(), text: "Sleep before 10:00pm" },
+    ],
+  });
+  function togglePage(index = null) {
+    if (index !== null) {
+      setPage(index);
+    }
+  }
+  function toggleAdding() {
+    setIsAdding((prev) => !prev);
+  }
+  function addTask(time, task) {
+    const newTask = {
+      id: crypto.randomUUID(),
+      text: task,
+    };
+    setData((prev) => ({ ...prev, [time]: [...prev[time], newTask] }));
+  }
+  function deleteTask(id = null, time = null) {
+    if (id !== null || time !== null) {
+      const filteredData = data[time].filter((e) => e.id !== id);
+      setData((prev) => ({ ...prev, [time]: filteredData }));
+    }
+  }
+  function moveUp(index = null, time = null) {
+    if (index !== null || time !== null) {
+      if (data[time][index - 1]) {
+        const array = [...data[time]];
+        [array[index - 1], array[index]] = [array[index], array[index - 1]];
+        setData((prev) => ({ ...prev, [time]: array }));
+      } else {
+        console.log("Element is at the top!");
+      }
+    }
+  }
+  function moveDown(index = null, time = null) {
+    if (index !== null || time !== null) {
+      if (data[time][index + 1]) {
+        const array = [...data[time]];
+        [array[index + 1], array[index]] = [array[index], array[index + 1]];
+        setData((prev) => ({ ...prev, [time]: array }));
+      }
+    } else {
+      console.log("Element is at the bottom!");
+    }
+  }
+
+  function setS(time) {
+    setSpecific(time);
+  }
+  function toggleEdit() {
+    setIsEdit((prev) => !prev);
+  }
+  function setCurrentMonth(month) {
+    setMonth(month);
+  }
+  function setCurrentyear(year) {
+    setYear(year);
+  }
+  const context = {
+    isMainPage: page === 0,
+    togglePage: togglePage,
+    setMonth: setCurrentMonth,
+    setYear: setCurrentyear,
+    setSpecific: setS,
+    specificTime: specific,
+    add: addTask,
+    del: deleteTask,
+    up: moveUp,
+    down: moveDown,
+    setData: setData,
+    data: data,
+    get: isAdding,
+    toggleAdding: toggleAdding,
+    toggleEdit: toggleEdit,
+    isEdit: isEdit,
+  };
+
+  return (
+    <>
+      <Context.Provider value={context}>{children}</Context.Provider>
+    </>
+  );
+}
+export default AppProvider;
+</file>
+
+<file path="src/components/HeaderFooter/Header.jsx">
+import styles from "./Header.module.css";
+import IconButton from "../Buttons/IconButton";
+import { FiBell, FiEdit } from "react-icons/fi";
+import { useContext, useState } from "react";
+import Context from "../App/Context";
+import clsx from "clsx";
+function Header() {
+  const { toggleEdit, isMainPage } = useContext(Context);
+  const [isActive, setIsActive] = useState(false);
+  function handleToggle() {
+    toggleEdit();
+    setIsActive((prev) => !prev);
+  }
+  return (
+    <div className={styles.cont}>
+      <h1 className={styles.title}>Checks Me</h1>
+      <div className={styles.rightCont}>
+        <div
+          className={clsx(
+            styles.editBtn,
+            isMainPage && styles.showEdit,
+            !isMainPage && styles.hideEdit,
+          )}
+        >
+          <IconButton
+            icon={<FiEdit />}
+            func={handleToggle}
+            active={isActive}
+            text="Edit"
+          />
+        </div>
+
+        <IconButton icon={<FiBell />} />
+      </div>
+    </div>
+  );
+}
+export default Header;
+</file>
+
+<file path="src/components/Buttons/IconButton.jsx">
+import styles from "./Buttons.module.css";
+import {} from "react";
+import clsx from "clsx";
+
+function IconButton({ icon, func = null, active = false, text = "" }) {
+  function handle(e) {
+    if (func !== null) func(e);
+  }
+  return (
+    <button
+      className={clsx(styles.icon, active && styles.on, !active && styles.off)}
+      onClick={(e) => handle(e)}
+    >
+      {icon} <p>{text}</p>
     </button>
   );
 }
