@@ -5,6 +5,7 @@
     border: none;
     border-radius: 20px;
     padding: 10px;
+    font-size: 14px;
 }
 
 .cont:focus {

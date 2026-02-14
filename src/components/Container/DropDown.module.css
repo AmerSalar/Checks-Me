@@ -6,6 +6,7 @@
     color: var(--text-main);
     transform: translateX(6px);
     padding: 5px;
+    font-size: 14px;
 }
 
 .cont:focus {
