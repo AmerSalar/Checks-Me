@@ -1,11 +1,9 @@
-.cont {
+.show {
+    width: 100%;
+    position: absolute;
+    display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-}
-
-.show {
-    display: flex;
 }
 
 .hide {

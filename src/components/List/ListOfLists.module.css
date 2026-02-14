@@ -1,9 +1,15 @@
 .cont {
-    position: absolute;
     width: 100%;
-    height: 80dvh;
+    height: 85dvh;
     overflow: scroll;
     margin: 0%;
+
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.cont::-webkit-scrollbar {
+    display: none;
 }
 
 .show {

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Context from "./Context";
 
-function AppProvider({ children, setPage }) {
+function AppProvider({ children, page, setPage, setYear, setMonth }) {
   const [isAdding, setIsAdding] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
   const [specific, setSpecific] = useState(null);
@@ -82,8 +82,17 @@ function AppProvider({ children, setPage }) {
   function toggleEdit() {
     setIsEdit((prev) => !prev);
   }
+  function setCurrentMonth(month) {
+    setMonth(month);
+  }
+  function setCurrentyear(year) {
+    setYear(year);
+  }
   const context = {
+    isMainPage: page === 0,
     togglePage: togglePage,
+    setMonth: setCurrentMonth,
+    setYear: setCurrentyear,
     setSpecific: setS,
     specificTime: specific,
     add: addTask,

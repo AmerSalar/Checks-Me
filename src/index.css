@@ -1,16 +1,35 @@
 :root {
+  --bg: hsl(0, 0%, 5%);
+  --bg-secondary: hsl(0, 0%, 10%);
+  --bg-extra: hsl(0, 0%, 15%);
+  --text-main: hsl(0, 0%, 95%);
+  --text-alt: hsl(0, 0%, 85%);
+  --main: hsl(222, 50%, 50%);
+  --light-main: hsl(222, 50%, 60%);
+  --lighter-main: hsl(222, 50%, 65%);
+
+  /* --bg: hsl(0, 0%, 95%);
+  --bg-secondary: hsl(0, 0%, 85%);
+  --bg-extra: hsl(0, 0%, 90%);
+  --text-main: hsl(0, 0%, 5%);
+  --text-alt: hsl(0, 0%, 15%);
+  --main-blue: hsl(222, 50%, 50%);
+  --light-blue: hsl(222, 50%, 40%);
+  --lighter-blue: hsl(222, 50%, 35%); */
+
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #252525;
+  background-color: var(--bg);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
 }
 
 

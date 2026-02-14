@@ -1,29 +1,27 @@
 .cont {
-    margin: 10px;
-    border: solid 1px #444;
-    border-radius: 25px;
-    padding: 2%;
+    background-color: var(--bg-secondary);
+    margin: 5px;
+    border-radius: 10px;
+    padding: 3%;
 }
 
 .time {
+    color: var(--text-main);
     padding-left: 10px;
     width: 100%;
     align-content: center;
-    /* background-color: rgb(46, 89, 175); */
     border-radius: 5px;
 }
 
 .upperCont {
     display: flex;
     justify-content: space-between;
-    background-color: rgb(40, 115, 185);
-    /* border: solid 1px white; */
-    border-radius: 15px;
+    background-color: var(--main);
+    border-radius: 10px;
 }
 
 .upperCont button {
-    border-top: solid 1px #eeeeeedd;
-    border-bottom: solid 1px #eeeeee25;
+    background-color: var(--light-main);
     font-size: 1.5rem;
     height: 30px;
 }

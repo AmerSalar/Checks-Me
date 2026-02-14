@@ -23,12 +23,12 @@
 .Btn button {
     width: 150px;
     padding: 5px;
-    background-color: rgb(40, 115, 185);
+    background-color: var(--main);
     border-radius: 15px;
 }
 
 .Btn button:active {
-    background-color: rgb(49, 127, 201);
+    background-color: var(--light-main);
 }
 
 .cancel {

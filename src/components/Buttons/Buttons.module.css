@@ -3,13 +3,7 @@
     cursor: pointer;
     background: transparent;
     color: #ccc;
-    /* background: rgb(50, 100, 200); */
     border: none;
-    /* border-bottom: solid 1px #eeeeee55;
-    border-top: solid 1px #eeeeeeff; */
-    /* box-shadow: 5px 5px 5px hsla(0, 0%, 0%, 0.1); */
-    /* border: solid 1px white; */
-    /* background-color: #333; */
     border-radius: 40px;
     width: 50px;
     height: 50px;
@@ -18,20 +12,23 @@
     margin: 5px;
 }
 
-.icon:hover {
-    color: white;
+.icon p {
+    font-size: 0.6rem;
+    margin-left: 5px;
 }
 
-.icon:active {
-    transform: scale(0.98);
+.icon:hover {
+    color: #eee;
 }
+
 
 .on {
-    color: rgb(100, 175, 245);
+    color: var(--light-main);
+
 }
 
 .on:hover {
-    color: rgb(127, 188, 245);
+    color: var(--lighter-main);
 }
 
 .off {

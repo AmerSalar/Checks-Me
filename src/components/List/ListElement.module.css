@@ -1,13 +1,14 @@
 .cont {
+    background-color: var(--bg-extra);
+    color: var(--text-alt);
     width: inherit;
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: min-content;
-    margin: 3px;
-    padding: 3px;
-    border: solid 1px gray;
-    border-radius: 25px;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 10px;
 }
 
 h3 {

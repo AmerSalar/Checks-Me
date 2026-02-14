@@ -3,8 +3,9 @@ import IconButton from "../Buttons/IconButton";
 import { FiBell, FiEdit } from "react-icons/fi";
 import { useContext, useState } from "react";
 import Context from "../App/Context";
+import clsx from "clsx";
 function Header() {
-  const { toggleEdit } = useContext(Context);
+  const { toggleEdit, isMainPage } = useContext(Context);
   const [isActive, setIsActive] = useState(false);
   function handleToggle() {
     toggleEdit();
@@ -14,7 +15,21 @@ function Header() {
     <div className={styles.cont}>
       <h1 className={styles.title}>Checks Me</h1>
       <div className={styles.rightCont}>
-        <IconButton icon={<FiEdit />} func={handleToggle} active={isActive} />
+        <div
+          className={clsx(
+            styles.editBtn,
+            isMainPage && styles.showEdit,
+            !isMainPage && styles.hideEdit,
+          )}
+        >
+          <IconButton
+            icon={<FiEdit />}
+            func={handleToggle}
+            active={isActive}
+            text="Edit"
+          />
+        </div>
+
         <IconButton icon={<FiBell />} />
       </div>
     </div>

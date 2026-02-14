@@ -7,7 +7,7 @@
     align-items: center;
     box-shadow: 0px 2px 5px #00000050;
     border-radius: 10px;
-    background-color: #30aa3000;
+    background-color: var(--bg-extra);
 }
 
 .cont h2 {
@@ -21,10 +21,10 @@
     transform: translateY(10px);
     margin: 0%;
     font-size: 0.33rem;
-    color: #aaa;
+    color: var(--text-main);
 }
 
 .today {
-    box-shadow: 0px 0px 10px #64aff5;
-    outline: solid 2px #64aff5;
+    box-shadow: 0px 0px 10px var(--lighter-main);
+    outline: solid 1px var(--light-main);
 }

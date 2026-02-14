@@ -5,16 +5,22 @@ import Calendar from "./components/Calendar/Calendar";
 import ListContainer from "./components/Container/ListContainer";
 import { useState } from "react";
 function App() {
-  const month = new Date().getMonth() + 1;
+  const [year, setYear] = useState(new Date().getFullYear());
+  const [month, setMonth] = useState(new Date().getMonth() + 1);
   const [activePage, setActivePage] = useState(0);
 
   return (
     <>
-      <AppProvider setPage={setActivePage}>
+      <AppProvider
+        page={activePage}
+        setPage={setActivePage}
+        setYear={setYear}
+        setMonth={setMonth}
+      >
         <Header />
-        <ListContainer active={activePage === 0} />
         <div className="app-container">
-          <Calendar year={2026} month={month} active={activePage === 1} />
+          <ListContainer active={activePage === 0} />
+          <Calendar year={year} month={month} active={activePage === 1} />
         </div>
 
         <Footer />
