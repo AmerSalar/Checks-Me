@@ -4,7 +4,7 @@ import { FiTrash, FiArrowUp, FiArrowDown } from "react-icons/fi";
 import clsx from "clsx";
 import { useContext } from "react";
 import Context from "../App/Context";
-function EditBar({ eId, eTime, eIndex }) {
+function EditBar({ eId, eTime, eIndex, isSingleEdit }) {
   const { isEdit, del = null, up, down } = useContext(Context);
 
   function deleteTask() {
@@ -22,8 +22,8 @@ function EditBar({ eId, eTime, eIndex }) {
     <div
       className={clsx(
         styles.cont,
-        isEdit && styles.show,
-        !isEdit && styles.hide,
+        (isEdit || isSingleEdit) && styles.show,
+        !isEdit && !isSingleEdit && styles.hide,
       )}
     >
       <IconButton icon={<FiArrowDown />} func={moveDown} />

@@ -17,8 +17,17 @@
 .upperCont {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     background-color: var(--main);
     border-radius: 10px;
+}
+
+.btnCont {
+    display: block;
+}
+
+.btnContOff {
+    display: none;
 }
 
 .upperCont button {

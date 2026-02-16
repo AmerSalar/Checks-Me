@@ -3,9 +3,10 @@ import ListElement from "./ListElement";
 import IconButton from "../Buttons/IconButton";
 import React, { useContext } from "react";
 import Context from "../App/Context";
+import clsx from "clsx";
 
 function ListOfElements({ timezone, elements = [] }) {
-  const { toggleAdding, setSpecific } = useContext(Context);
+  const { toggleAdding, setSpecific, isEdit = false } = useContext(Context);
   function handleAddingTask() {
     setSpecific(timezone.toLowerCase());
     toggleAdding();
@@ -14,7 +15,14 @@ function ListOfElements({ timezone, elements = [] }) {
     <div className={styles.cont}>
       <div className={styles.upperCont}>
         <h3 className={styles.time}>{timezone}</h3>
-        <IconButton icon={"+"} func={handleAddingTask} className={"addBtn"} />
+        <div
+          className={clsx(
+            isEdit && styles.btnCont,
+            !isEdit && styles.btnContOff,
+          )}
+        >
+          <IconButton icon={"+"} func={handleAddingTask} className={"addBtn"} />
+        </div>
       </div>
       {elements.map((e, i) => {
         return (
