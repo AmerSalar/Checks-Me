@@ -32,6 +32,8 @@ function ListOfElements({ timezone, elements = [] }) {
             eId={e.id}
             eTime={timezone.toLowerCase()}
             eIndex={i}
+            eStatus={e.status}
+            eCategory={e.category}
           />
         );
       })}

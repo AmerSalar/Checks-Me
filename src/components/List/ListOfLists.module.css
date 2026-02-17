@@ -19,3 +19,34 @@
 .hide {
     filter: blur(2px);
 }
+
+.saveCont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.saveCont button {
+    padding: 0%;
+    margin-bottom: 15%;
+    width: 90%;
+    font-weight: bold;
+    /* background: linear-gradient(180deg, var(--light-main), var(--main)); */
+    background: linear-gradient(90deg, var(--main), var(--lighter-main), var(--main));
+    background-size: 200% 100%;
+    animation: moveGradient 3s linear infinite;
+    /* border: solid 1px white; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes moveGradient {
+    from {
+        background-position: 0% 0%;
+    }
+
+    to {
+        background-position: 200% 0%;
+    }
+}

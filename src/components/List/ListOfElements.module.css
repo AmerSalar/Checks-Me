@@ -31,7 +31,7 @@
 }
 
 .upperCont button {
-    background-color: var(--light-main);
+    background: linear-gradient(180deg, var(--light-main), var(--main));
     font-size: 1.5rem;
     height: 30px;
 }

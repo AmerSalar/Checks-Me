@@ -18,8 +18,7 @@
 .capsule {
     -webkit-tap-highlight-color: transparent;
     cursor: pointer;
-    appearance: none;
-    -webkit-appearance: none;
+    border: none;
     width: 26px;
     height: 16px;
     margin: 3px;

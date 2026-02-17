@@ -12,11 +12,19 @@
 }
 
 .checked {
-    background-color: hsla(0, 0%, 100%, 0.025);
-    color: hsla(0, 0%, 100%, 0.5);
+    background-color: hsla(0, 0%, 0%, 0.10);
+    color: hsla(0, 0%, 100%, 0.25);
 }
 
 h3 {
     margin-left: 5px;
     font-size: 12px;
+}
+
+.leftCont {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin: 0%;
+    /* border: solid 1px white; */
 }

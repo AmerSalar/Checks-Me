@@ -1,18 +1,17 @@
 import styles from "./CircleBar.module.css";
 import clsx from "clsx";
-import React, { useState, useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import Context from "../App/Context";
-function CircleBar({ checker, isSingleEdit }) {
+function CircleBar({ checker, isSingleEdit, active, setActive }) {
   const { isEdit } = useContext(Context);
-  const [active, setActive] = useState(null);
-  function handleActive(e) {
-    const value = e.target.value;
+  useEffect(() => {
+    checker(active !== null);
+  }, [active, checker]);
+  function handleActive(value) {
     if (active === value) {
       setActive(null);
-      checker(false);
     } else {
       setActive(value);
-      checker(true);
     }
   }
   return (
@@ -23,36 +22,38 @@ function CircleBar({ checker, isSingleEdit }) {
         !isEdit && !isSingleEdit && styles.show,
       )}
     >
-      <p></p>
-      <input
-        type="radio"
-        name="barCapsule"
-        value="op1"
+      <button
+        type="button"
+        aria-label="check red"
+        aria-pressed={active === "red"}
+        value={"red"}
+        onClick={() => handleActive("red")}
         className={clsx(
           styles.capsule,
-          active === "op1" && styles.red,
-          active === "op2" && styles.yellow,
-          active === "op3" && styles.green,
+          active === "red" && styles.red,
+          active === "yellow" && styles.yellow,
+          active === "green" && styles.green,
         )}
-        onClick={(e) => handleActive(e)}
       />
-      <input
-        type="radio"
-        name="barCapsule"
-        value="op2"
+      <button
+        type="button"
+        aria-label="check yellow"
+        aria-pressed={active === "yellow"}
+        value={"yellow"}
+        onClick={() => handleActive("yellow")}
         className={clsx(
           styles.capsule,
-          active === "op2" && styles.yellow,
-          active === "op3" && styles.green,
+          active === "yellow" && styles.yellow,
+          active === "green" && styles.green,
         )}
-        onClick={(e) => handleActive(e)}
       />
-      <input
-        type="radio"
-        name="barCapsule"
-        value="op3"
-        className={clsx(styles.capsule, active === "op3" && styles.green)}
-        onClick={(e) => handleActive(e)}
+      <button
+        type="button"
+        aria-label="check green"
+        aria-pressed={active === "green"}
+        value={"green"}
+        onClick={() => handleActive("green")}
+        className={clsx(styles.capsule, active === "green" && styles.green)}
       />
     </div>
   );

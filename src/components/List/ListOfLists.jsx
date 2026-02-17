@@ -3,6 +3,8 @@ import styles from "./ListOfLists.module.css";
 import clsx from "clsx";
 import { useContext } from "react";
 import Context from "../App/Context";
+import IconButton from "../Buttons/IconButton";
+import { FiSave } from "react-icons/fi";
 function ListOfLists() {
   const { get, data } = useContext(Context);
   return (
@@ -12,6 +14,9 @@ function ListOfLists() {
       <ListOfElements timezone="Afternoon" elements={data.afternoon} />
       <ListOfElements timezone="Evening" elements={data.evening} />
       <ListOfElements timezone="Night" elements={data.night} />
+      <div className={styles.saveCont}>
+        <IconButton icon={<FiSave />} text="Save Progress" />
+      </div>
     </div>
   );
 }

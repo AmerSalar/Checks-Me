@@ -25,12 +25,12 @@
     align-items: center;
     width: 150px;
     padding: 5px;
-    background-color: var(--main);
+    background: linear-gradient(180deg, var(--light-main), var(--main));
     border-radius: 15px;
 }
 
 .Btn button:active {
-    background-color: var(--light-main);
+    background: linear-gradient(180deg, var(--lighter-main), var(--main));
 }
 
 .cancel {

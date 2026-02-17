@@ -17,7 +17,7 @@
     padding: 0%;
     padding-bottom: 10px;
     margin-bottom: -5px;
-    background-color: var(--main);
+    background: linear-gradient(180deg, var(--light-main), var(--main));
     transform: translateY(-10px);
     border: solid 4px var(--bg);
     border-top-left-radius: 50px;
