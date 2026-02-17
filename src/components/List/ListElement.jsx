@@ -28,7 +28,11 @@ function ListElement(props) {
   }
   return (
     <div
-      className={clsx(styles.cont, check && styles.checked)}
+      className={clsx(
+        styles.cont,
+        check && styles.checked,
+        props.eStreak >= 7 && styles.contPremium,
+      )}
       onClick={toggleEditable}
     >
       <div className={styles.leftCont}>

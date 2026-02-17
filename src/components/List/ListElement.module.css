@@ -1,5 +1,6 @@
 .cont {
     background-color: var(--bg-extra);
+
     color: var(--text-alt);
     width: inherit;
     display: flex;
@@ -9,6 +10,12 @@
     margin: 5px;
     padding: 5px;
     border-radius: 10px;
+}
+
+.contPremium {
+    background: linear-gradient(180deg, var(--bg), hsl(30, 80%, 40%), var(--bg));
+    background-size: 100% 200%;
+    animation: moveGradient 3s linear infinite;
 }
 
 .checked {
@@ -27,4 +34,14 @@ h3 {
     align-items: center;
     margin: 0%;
     /* border: solid 1px white; */
+}
+
+@keyframes moveGradient {
+    from {
+        background-position: 0% 0%;
+    }
+
+    to {
+        background-position: 0% 200%;
+    }
 }

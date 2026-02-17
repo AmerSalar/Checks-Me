@@ -3,16 +3,18 @@ const TaskLogic = () => {
   const [data, setData] = useState({
     morning: [
       {
-        id: crypto.randomUUID(),
+        id: "wake_up_early",
         text: "Wake up early",
         status: null,
         category: "routine",
+        streak: 0,
       },
       {
         id: crypto.randomUUID(),
         text: "Pray al-Fajr",
         status: null,
         category: "religion",
+        streak: 0,
       },
     ],
     midday: [
@@ -21,12 +23,14 @@ const TaskLogic = () => {
         text: "Pray ad-Duhr",
         status: null,
         category: "religion",
+        streak: 0,
       },
       {
         id: crypto.randomUUID(),
         text: "Eat clean food",
         status: null,
         category: "meal",
+        streak: 0,
       },
     ],
     afternoon: [
@@ -35,12 +39,14 @@ const TaskLogic = () => {
         text: "Pray al-Asir",
         status: null,
         category: "religion",
+        streak: 0,
       },
       {
         id: crypto.randomUUID(),
         text: "Study session 1 hour",
         status: null,
         category: "learning",
+        streak: 0,
       },
     ],
     evening: [
@@ -49,12 +55,14 @@ const TaskLogic = () => {
         text: "Pray al-Maghrib",
         status: null,
         category: "religion",
+        streak: 0,
       },
       {
         id: crypto.randomUUID(),
         text: "Eat clean food",
         status: null,
         category: "meal",
+        streak: 0,
       },
     ],
     night: [
@@ -63,12 +71,14 @@ const TaskLogic = () => {
         text: "Pray al-Isha",
         status: null,
         category: "religion",
+        streak: 0,
       },
       {
         id: crypto.randomUUID(),
         text: "Sleep before 11pm",
         status: null,
         category: "routine",
+        streak: 0,
       },
     ],
   });

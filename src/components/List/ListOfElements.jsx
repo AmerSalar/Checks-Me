@@ -34,6 +34,7 @@ function ListOfElements({ timezone, elements = [] }) {
             eIndex={i}
             eStatus={e.status}
             eCategory={e.category}
+            eStreak={e.streak}
           />
         );
       })}

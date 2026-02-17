@@ -32,6 +32,12 @@ function AppProvider({ children, page, setPage, setYear, setMonth }) {
     loadData();
   }, [setPage]);
 
+  // useEffect(() => {
+  //  async function saveDayData() {
+  //   const docRef = doc(db, "users", 'ameer-dev', 'days');
+  //  }
+  // })
+
   function togglePage(index = null) {
     if (index !== null) {
       setPage(index);
@@ -41,8 +47,17 @@ function AppProvider({ children, page, setPage, setYear, setMonth }) {
     setIsAdding((prev) => !prev);
   }
   function addTask(time, task) {
+    const generatedId =
+      task
+        .toLowerCase()
+        .replace(/[^a-z0-9 ]/g, "")
+        .trim()
+        .split(/\s+/)
+        .join("_") +
+      "_in_" +
+      time;
     const newTask = {
-      id: crypto.randomUUID(),
+      id: generatedId,
       text: task,
       status: null,
       category: "general",
