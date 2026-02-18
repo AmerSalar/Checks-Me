@@ -46,7 +46,7 @@ function AppProvider({ children, page, setPage, setYear, setMonth }) {
   function toggleAdding() {
     setIsAdding((prev) => !prev);
   }
-  function addTask(time, task) {
+  function addTask(time, task, category) {
     const generatedId =
       task
         .toLowerCase()
@@ -60,7 +60,7 @@ function AppProvider({ children, page, setPage, setYear, setMonth }) {
       id: generatedId,
       text: task,
       status: null,
-      category: "general",
+      category: category,
     };
     setData((prev) => ({ ...prev, [time]: [...prev[time], newTask] }));
   }

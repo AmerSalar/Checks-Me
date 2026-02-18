@@ -3,7 +3,6 @@
     height: 85dvh;
     overflow: scroll;
     margin: 0%;
-
     -ms-overflow-style: none;
     scrollbar-width: none;
 }
@@ -17,7 +16,7 @@
 }
 
 .hide {
-    filter: blur(2px);
+    filter: blur(4px);
 }
 
 .saveCont {

@@ -34,13 +34,26 @@
 }
 
 .red {
+    animation: popColor 0.1s;
     background: linear-gradient(180deg, hsl(0, 45%, 40%), hsl(0, 65%, 15%)) !important;
 }
 
 .yellow {
+    animation: popColor 0.1s;
     background: linear-gradient(180deg, hsl(50, 50%, 50%), hsl(50, 70%, 10%)) !important;
 }
 
 .green {
+    animation: popColor 0.1s;
     background: linear-gradient(180deg, hsl(110, 60%, 50%), hsl(110, 70%, 10%)) !important;
+}
+
+@keyframes popColor {
+    from {
+        scale: 0.75;
+    }
+
+    to {
+        scale: 1.125;
+    }
 }

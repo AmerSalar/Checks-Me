@@ -6,17 +6,33 @@ import { FiCheckCircle, FiX } from "react-icons/fi";
 import { useContext, useEffect, useState } from "react";
 import Context from "../App/Context";
 function AddContainer() {
+  const times = ["Time", "Morning", "Midday", "Afternoon", "Evening", "Night"];
+  const categories = [
+    "Category",
+    "General",
+    "Meal",
+    "Physical",
+    "Religion",
+    "Learning",
+    "Routine",
+    "Rest",
+    "Chore",
+    "Sport",
+    "Rule",
+    "Work",
+  ];
   const { toggleAdding, add, specificTime, setSpecific, isAdding } =
     useContext(Context);
   const [task, setTask] = useState("");
   const [time, setTime] = useState("morning");
+  const [category, setCategory] = useState("general");
 
   function addTask() {
     if (task.trim() !== "") {
       if (specificTime) {
-        add(specificTime, task);
+        add(specificTime, task, category);
       } else {
-        add(time, task);
+        add(time, task, category);
       }
 
       toggleAdding();
@@ -44,12 +60,24 @@ function AddContainer() {
             t={task}
             specificTime={specificTime}
           />
-          <DropDown setT={setTime} t={time} specificTime={specificTime} />
+        </div>
+        <div className={styles.middleCont}>
+          <DropDown
+            setV={setTime}
+            v={time}
+            specificValue={specificTime}
+            options={times}
+            defaultV={times[1].toLowerCase()}
+          />
+          <DropDown
+            setV={setCategory}
+            v={category}
+            options={categories}
+            defaultV={categories[1].toLowerCase()}
+          />
         </div>
         <div className={styles.lowerCont}>
-          <div className={styles.Btn}>
-            <IconButton icon={<FiCheckCircle />} func={addTask} />
-          </div>
+          <IconButton icon={<FiCheckCircle />} func={addTask} />
         </div>
       </div>
     </>

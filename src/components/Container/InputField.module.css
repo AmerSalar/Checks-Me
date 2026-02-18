@@ -1,7 +1,7 @@
 .cont {
     background-color: var(--bg-extra-secondary);
     color: var(--text-main);
-    width: 55%;
+    width: 75%;
     border: none;
     border-radius: 20px;
     padding: 10px;
@@ -12,10 +12,10 @@
     outline: solid 2px var(--light-main);
 }
 
-.alone {
+/* .alone {
     width: 90%;
 }
 
 .notAlone {
     width: 55%;
-}
+} */

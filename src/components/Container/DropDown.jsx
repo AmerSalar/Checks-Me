@@ -2,26 +2,35 @@ import IconButton from "../Buttons/IconButton";
 import styles from "./DropDown.module.css";
 import React, { _ } from "react";
 import clsx from "clsx";
-function DropDown({ t, setT, specificTime = null }) {
-  function setTime(e) {
-    setT(e.target.value);
+function DropDown(props) {
+  function setValue(e) {
+    props.setV(e.target.value);
   }
   return (
     <>
       <select
         className={clsx(
           styles.cont,
-          !specificTime && styles.show,
-          specificTime && styles.hide,
+          !props.specificValue && styles.show,
+          props.specificValue && styles.hide,
         )}
-        value={specificTime || t}
-        onChange={(e) => setTime(e)}
+        value={props.specificValue || props.v}
+        onChange={(e) => setValue(e)}
       >
-        <option value="morning">Morning</option>
-        <option value="midday">Midday</option>
-        <option value="afternoon">Afternoon</option>
-        <option value="evening">Evening</option>
-        <option value="night">Night</option>
+        {props.options.map((e, i) => {
+          if (i === 0) {
+            return (
+              <option value={props.defaultV} key={i}>
+                {e}
+              </option>
+            );
+          }
+          return (
+            <option value={e.toLowerCase()} key={i}>
+              {e}
+            </option>
+          );
+        })}
       </select>
     </>
   );

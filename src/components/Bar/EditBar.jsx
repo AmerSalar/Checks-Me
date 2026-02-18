@@ -26,8 +26,11 @@ function EditBar({ eId, eTime, eIndex, isSingleEdit }) {
         !isEdit && !isSingleEdit && styles.hide,
       )}
     >
-      <IconButton icon={<FiArrowDown />} func={moveDown} />
-      <IconButton icon={<FiArrowUp />} func={moveUp} />
+      <div className={styles.temporaryStyle}>
+        <IconButton icon={<FiArrowDown />} func={moveDown} />
+        <IconButton icon={<FiArrowUp />} func={moveUp} />
+      </div>
+
       <IconButton
         icon={<FiTrash />}
         className={styles.trash}

@@ -36,6 +36,11 @@ h3 {
     /* border: solid 1px white; */
 }
 
+.leftCont div {
+    transform: translateY(1px);
+    color: var(--lighter-main);
+}
+
 @keyframes moveGradient {
     from {
         background-position: 0% 0%;

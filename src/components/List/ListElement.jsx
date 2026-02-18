@@ -3,19 +3,36 @@ import Bar from "../Bar/CircleBar";
 import EditBar from "../Bar/EditBar";
 import styles from "./ListElement.module.css";
 import React, { useCallback, useState } from "react";
-import { FiCircle } from "react-icons/fi";
+import {
+  RiMoonFill,
+  RiBowlFill,
+  RiBrain2Fill,
+  RiBook2Fill,
+  RiHeartPulseFill,
+  RiCircleFill,
+  RiBriefcaseFill,
+  RiBattery2ChargeFill,
+  RiContractFill,
+  RiFootballFill,
+  RiPaintBrushFill,
+} from "react-icons/ri";
 
 function ListElement(props) {
   const [active, setActive] = useState(props.eStatus);
   const [singleEdit, setSingleEdit] = useState(false);
   const [check, setCheck] = useState(false);
   const icon = {
-    general: "⭕",
-    religion: "🕌",
-    physical: "💪",
-    meal: "🍽️",
-    routine: "📌",
-    learning: "📚",
+    general: <RiCircleFill />,
+    religion: <RiMoonFill />,
+    physical: <RiHeartPulseFill />,
+    meal: <RiBowlFill />,
+    routine: <RiBrain2Fill />,
+    learning: <RiBook2Fill />,
+    work: <RiBriefcaseFill />,
+    rest: <RiBattery2ChargeFill />,
+    rule: <RiContractFill />,
+    sport: <RiFootballFill />,
+    chore: <RiPaintBrushFill />,
   };
 
   const checker = useCallback((val) => {
@@ -36,7 +53,7 @@ function ListElement(props) {
       onClick={toggleEditable}
     >
       <div className={styles.leftCont}>
-        {icon[props.eCategory]}
+        <div>{icon[props.eCategory]}</div>
         <h3>{text}</h3>
       </div>
 

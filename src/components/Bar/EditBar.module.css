@@ -1,6 +1,6 @@
 .cont {
   display: flex;
-  justify-content: center;
+  justify-content: right;
   align-items: center;
   width: 100px;
   height: 25px;
@@ -26,4 +26,8 @@
 
 .cont button:last-child {
   color: #dd3d3d;
+}
+
+.temporaryStyle {
+  display: none;
 }

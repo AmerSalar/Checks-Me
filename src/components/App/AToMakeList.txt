@@ -1,0 +1,10 @@
+- Remove all lists which doesn't have a task
+- Tell user to add their first task when there's no task
+- Save button shows up after a task is checked, not always
+- Add drag and drop
+- Removing a task should tell user that are they sure? 
+because the task might have not been saved on the archives
+and progress will be lost. 
+- Tell user when saving that all unchecked tasks will be
+considered as undone which means red, are you sure you 
+want to continue?

@@ -1,47 +1,70 @@
 .cont {
+
+    padding: 0%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--bg-extra);
+    box-shadow: 0px 5px 25px hsla(0, 0%, 0%, 0.5);
+    height: fit-content;
+    width: 90%;
+    border-radius: 20px;
+}
+
+.upperCont {
+    width: 100%;
+
+    margin: 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: var(--bg-extra);
-    box-shadow: 0px 5px 25px hsla(0, 0%, 0%, 0.5);
-    height: 35dvh;
-    width: 90%;
-    border-radius: 50px;
-    /* border: solid 1px white; */
+    gap: 5px;
+}
+
+.middleCont {
+    display: flex;
+    gap: 10px;
 }
 
 .lowerCont {
-    width: 50%;
+    width: 100%;
+    max-height: fit-content;
     display: flex;
     justify-content: center;
     margin-top: 20px;
     gap: 25px;
+
+    padding-bottom: 40px;
 }
 
-.Btn button {
+.lowerCont button {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 150px;
+    width: 80%;
     padding: 5px;
     background: linear-gradient(180deg, var(--light-main), var(--main));
     border-radius: 15px;
 }
 
-.Btn button:active {
+
+.lowerCont button:active {
     background: linear-gradient(180deg, var(--lighter-main), var(--main));
 }
 
 .cancel {
-    width: inherit;
+    width: 100%;
+    margin: 0%;
+
     display: flex;
-    justify-content: end;
-    padding-right: 20px;
-    position: absolute;
-    top: 30px;
+    justify-content: right;
 }
 
-.upperCont {
-    margin-top: 20px;
+.cancel button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+    margin-top: 10px;
 }
