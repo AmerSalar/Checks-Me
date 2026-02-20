@@ -12,7 +12,7 @@ function ListOfElements({ timezone, elements = [] }) {
     toggleAdding();
   }
   return (
-    <div className={styles.cont}>
+    <div className={clsx(styles.cont, elements[0] ? styles.show : styles.hide)}>
       <div className={styles.upperCont}>
         <h3 className={styles.time}>{timezone}</h3>
         <div

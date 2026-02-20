@@ -20,6 +20,7 @@
 }
 
 .saveCont {
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -47,5 +48,26 @@
 
     to {
         background-position: 200% 0%;
+    }
+}
+
+.showSave {
+    display: flex;
+    animation: showButton 0.1s linear;
+}
+
+.hideSave {
+    display: none;
+}
+
+@keyframes showButton {
+    from {
+        scale: 0.95;
+        opacity: 0;
+    }
+
+    to {
+        scale: 1.05;
+        opacity: 1;
     }
 }

@@ -18,13 +18,6 @@ function DropDown(props) {
         onChange={(e) => setValue(e)}
       >
         {props.options.map((e, i) => {
-          if (i === 0) {
-            return (
-              <option value={props.defaultV} key={i}>
-                {e}
-              </option>
-            );
-          }
           return (
             <option value={e.toLowerCase()} key={i}>
               {e}

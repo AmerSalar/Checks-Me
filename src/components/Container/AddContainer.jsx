@@ -6,15 +6,14 @@ import { FiCheckCircle, FiX } from "react-icons/fi";
 import { useContext, useEffect, useState } from "react";
 import Context from "../App/Context";
 function AddContainer() {
-  const times = ["Time", "Morning", "Midday", "Afternoon", "Evening", "Night"];
+  const times = ["Morning", "Midday", "Afternoon", "Evening", "Night"];
   const categories = [
-    "Category",
+    "Routine",
     "General",
-    "Meal",
     "Physical",
     "Religion",
     "Learning",
-    "Routine",
+    "Meal",
     "Rest",
     "Chore",
     "Sport",
@@ -44,6 +43,7 @@ function AddContainer() {
       setSpecific(null);
       setTask("");
       setTime("morning");
+      setCategory("routine");
     }
     if (isAdding === false) resetinputs();
   }, [isAdding, setSpecific]);
@@ -67,13 +67,13 @@ function AddContainer() {
             v={time}
             specificValue={specificTime}
             options={times}
-            defaultV={times[1].toLowerCase()}
+            defaultV={"morning"}
           />
           <DropDown
             setV={setCategory}
             v={category}
             options={categories}
-            defaultV={categories[1].toLowerCase()}
+            defaultV={"general"}
           />
         </div>
         <div className={styles.lowerCont}>

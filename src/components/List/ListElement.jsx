@@ -2,7 +2,8 @@ import clsx from "clsx";
 import Bar from "../Bar/CircleBar";
 import EditBar from "../Bar/EditBar";
 import styles from "./ListElement.module.css";
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useContext, useState } from "react";
+import Context from "../App/Context";
 import {
   RiMoonFill,
   RiBowlFill,
@@ -18,6 +19,7 @@ import {
 } from "react-icons/ri";
 
 function ListElement(props) {
+  const { updateTaskStatus } = useContext(Context);
   const [active, setActive] = useState(props.eStatus);
   const [singleEdit, setSingleEdit] = useState(false);
   const [check, setCheck] = useState(false);
@@ -34,7 +36,9 @@ function ListElement(props) {
     sport: <RiFootballFill />,
     chore: <RiPaintBrushFill />,
   };
-
+  function updateTask(status) {
+    updateTaskStatus(props.eId, props.eTime, status);
+  }
   const checker = useCallback((val) => {
     setCheck(val);
   }, []);
@@ -43,6 +47,7 @@ function ListElement(props) {
   function toggleEditable() {
     setSingleEdit(false);
   }
+
   return (
     <div
       className={clsx(
@@ -62,6 +67,8 @@ function ListElement(props) {
         isSingleEdit={singleEdit}
         active={active}
         setActive={setActive}
+        update={updateTask}
+        id={props.eId}
       />
       <EditBar
         eId={props.eId}

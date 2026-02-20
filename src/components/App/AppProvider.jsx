@@ -9,11 +9,13 @@ function AppProvider({ children, page, setPage, setYear, setMonth }) {
   const [isAdding, setIsAdding] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
   const [specific, setSpecific] = useState(null);
+  const [hasChecks, setHasChecks] = useState(false);
+  const [error, setError] = useState(null);
+
   const { data, setData } = TaskLogic();
 
   useEffect(() => {
     async function loadData() {
-      console.log("re");
       try {
         setPage(-1);
         const docRef = doc(db, "users", "Ameer-dev");
@@ -30,14 +32,35 @@ function AppProvider({ children, page, setPage, setYear, setMonth }) {
     }
 
     loadData();
-  }, [setPage]);
+  }, [setData, setPage]);
 
   // useEffect(() => {
   //  async function saveDayData() {
   //   const docRef = doc(db, "users", 'ameer-dev', 'days');
   //  }
   // })
+  useEffect(() => {
+    console.log("re");
+    function lookForChecks() {
+      const hasCheck = Object.values(data).some((category) =>
+        category.some((task) => {
+          return task.status !== null;
+        }),
+      );
+      return hasCheck;
+    }
+    setHasChecks(lookForChecks());
+  }, [data]);
 
+  function updateTaskStatus(id, time, status) {
+    const updatedArray = data[time].map((task) => {
+      if (task.id === id) {
+        return { ...task, status: status };
+      }
+      return task;
+    });
+    setData((prev) => ({ ...prev, [time]: updatedArray }));
+  }
   function togglePage(index = null) {
     if (index !== null) {
       setPage(index);
@@ -54,15 +77,24 @@ function AppProvider({ children, page, setPage, setYear, setMonth }) {
         .trim()
         .split(/\s+/)
         .join("_") +
-      "_in_" +
-      time;
+      "_" +
+      time +
+      "_" +
+      category;
     const newTask = {
       id: generatedId,
       text: task,
       status: null,
       category: category,
     };
-    setData((prev) => ({ ...prev, [time]: [...prev[time], newTask] }));
+
+    if (data[time]) {
+      if (data[time].some((task) => task.id === generatedId)) {
+        handleErrors("The task already exists!");
+      } else setData((prev) => ({ ...prev, [time]: [...prev[time], newTask] }));
+    } else {
+      setData((prev) => ({ ...prev, [time]: [newTask] }));
+    }
   }
   function deleteTask(id = null, time = null) {
     if (id !== null || time !== null) {
@@ -105,7 +137,13 @@ function AppProvider({ children, page, setPage, setYear, setMonth }) {
   function setCurrentyear(year) {
     setYear(year);
   }
+  function handleErrors(message) {
+    setError(message);
+    setTimeout(() => setError(null), 5000);
+  }
   const context = {
+    error: error,
+    setError: setError,
     isMainPage: page === 0,
     togglePage: togglePage,
     setMonth: setCurrentMonth,
@@ -122,6 +160,8 @@ function AppProvider({ children, page, setPage, setYear, setMonth }) {
     toggleAdding: toggleAdding,
     toggleEdit: toggleEdit,
     isEdit: isEdit,
+    updateTaskStatus: updateTaskStatus,
+    hasChecks: hasChecks,
   };
 
   return (

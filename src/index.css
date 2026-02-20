@@ -5,9 +5,11 @@
   --bg-extra-secondary: hsl(0, 0%, 20%);
   --text-main: hsl(0, 0%, 95%);
   --text-alt: hsl(0, 0%, 85%);
+  --text-extra: hsl(0, 0%, 40%);
   --main: hsl(222, 50%, 50%);
   --light-main: hsl(222, 50%, 60%);
   --lighter-main: hsl(222, 50%, 65%);
+  --error: hsla(5, 80%, 65%, 0.9);
 
   /* --bg: hsl(0, 0%, 95%);
   --bg-secondary: hsl(0, 0%, 85%);

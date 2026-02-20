@@ -2,7 +2,7 @@ import styles from "./CircleBar.module.css";
 import clsx from "clsx";
 import React, { useContext, useEffect } from "react";
 import Context from "../App/Context";
-function CircleBar({ checker, isSingleEdit, active, setActive }) {
+function CircleBar({ checker, isSingleEdit, active, setActive, update }) {
   const { isEdit } = useContext(Context);
   useEffect(() => {
     checker(active !== null);
@@ -10,8 +10,10 @@ function CircleBar({ checker, isSingleEdit, active, setActive }) {
   function handleActive(value) {
     if (active === value) {
       setActive(null);
+      update(null);
     } else {
       setActive(value);
+      update(value);
     }
   }
   return (

@@ -9,3 +9,21 @@
 .hide {
     display: none;
 }
+
+.messageCont {
+    position: absolute;
+    width: 100%;
+    /* border: solid 1px white; */
+}
+
+.messageCont pre {
+    display: block;
+    font-family: sans-serif;
+    color: var(--text-extra);
+    text-align: center;
+    font-size: 18px;
+}
+
+.hideMessage {
+    display: none;
+}

@@ -5,6 +5,14 @@
     padding: 3%;
 }
 
+.show {
+    display: block;
+}
+
+.hide {
+    display: none;
+}
+
 .time {
     color: var(--text-main);
     padding-left: 10px;

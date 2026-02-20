@@ -6,7 +6,7 @@ import Context from "../App/Context";
 import IconButton from "../Buttons/IconButton";
 import { FiSave } from "react-icons/fi";
 function ListOfLists() {
-  const { isAdding, data } = useContext(Context);
+  const { isAdding, data, hasChecks } = useContext(Context);
   return (
     <div
       className={clsx(
@@ -20,7 +20,12 @@ function ListOfLists() {
       <ListOfElements timezone="Afternoon" elements={data.afternoon} />
       <ListOfElements timezone="Evening" elements={data.evening} />
       <ListOfElements timezone="Night" elements={data.night} />
-      <div className={styles.saveCont}>
+      <div
+        className={clsx(
+          styles.saveCont,
+          hasChecks ? styles.showSave : styles.hideSave,
+        )}
+      >
         <IconButton icon={<FiSave />} text="Save Progress" />
       </div>
     </div>

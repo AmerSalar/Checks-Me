@@ -1,0 +1,52 @@
+.cont {
+    display: none;
+    padding: 0%;
+    top: 60px;
+    position: fixed;
+    width: 90%;
+    background-color: var(--error);
+    border-radius: 10px;
+    z-index: 10;
+}
+
+.cont p {
+    margin: 5px;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    width: 95%;
+    color: var(--text-main);
+    text-align: center;
+    font-size: 14px;
+}
+
+.show {
+    animation: pop 0.15s ease;
+    display: block;
+}
+
+.hide {
+    animation: fadeOut 0.25s ease forwards;
+}
+
+@keyframes pop {
+    from {
+        filter: blur(2px);
+        scale: 0.95;
+    }
+
+    to {
+        filter: none;
+        scale: 1.05;
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        scale: 1;
+    }
+
+    100% {
+        scale: 0;
+        display: none;
+    }
+}
