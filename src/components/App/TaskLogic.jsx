@@ -90,26 +90,6 @@ const TaskLogic = () => {
     // ],
   });
 
-  // useEffect(() => {
-  //   console.log("render");
-  //   const times = ["morning", "midday", "afternoon", "evening", "night"];
-  //   function checkStatus() {
-  //     if (hasChecks) return;
-  //     times.forEach((e) => {
-  //       if (data[e]) {
-  //         data[e].forEach((e) => {
-  //           if (e.status !== null) {
-  //             setHasCheks(true);
-  //             return;
-  //           }
-  //         });
-  //       }
-  //     });
-  //   }
-  //   checkStatus();
-  //   console.log(hasChecks);
-  // }, [data]);
-
   return { data, setData };
 };
 export default TaskLogic;

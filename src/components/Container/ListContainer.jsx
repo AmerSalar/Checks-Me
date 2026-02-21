@@ -19,7 +19,10 @@ function ListContainer({ active }) {
       )}
     >
       <div className={isEmpty ? styles.messageCont : styles.hideMessage}>
-        <pre>{"Add a task to start"}</pre>
+        <pre>
+          {"Add a task to start\n\n" +
+            "Make your daily routine template, \nwhich is a list of the tasks you do everyday."}
+        </pre>
       </div>
       <Container />
       <ListOfLists />

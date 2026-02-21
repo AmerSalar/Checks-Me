@@ -7,6 +7,7 @@
     background-color: var(--error);
     border-radius: 10px;
     z-index: 10;
+
 }
 
 .cont p {
@@ -25,13 +26,13 @@
 }
 
 .hide {
-    animation: fadeOut 0.25s ease forwards;
+    animation: fadeOut 0.5s ease forwards;
 }
 
 @keyframes pop {
     from {
         filter: blur(2px);
-        scale: 0.95;
+        scale: 0.8;
     }
 
     to {
@@ -42,6 +43,7 @@
 
 @keyframes fadeOut {
     0% {
+        display: block;
         scale: 1;
     }
 

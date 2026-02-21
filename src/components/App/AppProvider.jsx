@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Context from "./Context";
 import { db } from "../../firebase";
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc, setDoc } from "firebase/firestore";
 import TaskLogic from "./TaskLogic";
 
 function AppProvider({ children, page, setPage, setYear, setMonth }) {
@@ -18,7 +18,7 @@ function AppProvider({ children, page, setPage, setYear, setMonth }) {
     async function loadData() {
       try {
         setPage(-1);
-        const docRef = doc(db, "users", "Ameer-dev");
+        const docRef = doc(db, "users", "Ameer-dev", "data", "routine");
         const snapshot = await getDoc(docRef);
         await sleep(500);
         setPage(0);
@@ -27,18 +27,35 @@ function AppProvider({ children, page, setPage, setYear, setMonth }) {
           setData(snapshot.data().tasks);
         }
       } catch (e) {
+        setPage(0);
         console.error(e);
+        handleErrors("Couldn't load tasks!");
       }
     }
 
     loadData();
   }, [setData, setPage]);
 
-  // useEffect(() => {
-  //  async function saveDayData() {
-  //   const docRef = doc(db, "users", 'ameer-dev', 'days');
-  //  }
-  // })
+  async function saveTemplate() {
+    try {
+      const template = {};
+      for (let timeSlot in data) {
+        template[timeSlot] = data[timeSlot].map((task) => {
+          return {
+            id: task.id,
+            text: task.text,
+            category: task.category,
+          };
+        });
+      }
+      const docRef = doc(db, "users", "ameer-dev", "data", "routine");
+      await setDoc(docRef, template);
+      handleErrors("data saved");
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
   useEffect(() => {
     console.log("re");
     function lookForChecks() {
@@ -69,7 +86,7 @@ function AppProvider({ children, page, setPage, setYear, setMonth }) {
   function toggleAdding() {
     setIsAdding((prev) => !prev);
   }
-  function addTask(time, task, category) {
+  async function addTask(time, task, category) {
     const generatedId =
       task
         .toLowerCase()
@@ -91,15 +108,23 @@ function AppProvider({ children, page, setPage, setYear, setMonth }) {
     if (data[time]) {
       if (data[time].some((task) => task.id === generatedId)) {
         handleErrors("The task already exists!");
-      } else setData((prev) => ({ ...prev, [time]: [...prev[time], newTask] }));
+      } else {
+        setData((prev) => ({ ...prev, [time]: [...prev[time], newTask] }));
+        await sleep(1000);
+        saveTemplate();
+      }
     } else {
       setData((prev) => ({ ...prev, [time]: [newTask] }));
+      await sleep(1000);
+      saveTemplate();
     }
   }
-  function deleteTask(id = null, time = null) {
+  async function deleteTask(id = null, time = null) {
     if (id !== null || time !== null) {
       const filteredData = data[time].filter((e) => e.id !== id);
       setData((prev) => ({ ...prev, [time]: filteredData }));
+      await sleep(1000);
+      saveTemplate();
     }
   }
   function moveUp(index = null, time = null) {
