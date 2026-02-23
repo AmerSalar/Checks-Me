@@ -23,7 +23,6 @@ function AppProvider({ children, page, setPage, setYear, setMonth }) {
         setPage(-1);
         const docRef = doc(db, "users", userID, "data", "routine");
         const snapshot = await getDoc(docRef);
-        await sleep(500);
         setPage(0);
 
         if (snapshot.exists()) {
@@ -40,14 +39,15 @@ function AppProvider({ children, page, setPage, setYear, setMonth }) {
     }
 
     loadDailyData();
-  }, [setData, setPage]);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     async function saveDailyData() {
       try {
         const docRef = doc(db, "users", userID, "data", "routine");
         await setDoc(docRef, { dailyTasks: data });
-        // handleErrors("data saved");
       } catch (e) {
         console.error(e);
         handleErrors("We couldn't save information!");
@@ -57,6 +57,7 @@ function AppProvider({ children, page, setPage, setYear, setMonth }) {
       saveDailyData();
     }
   }, [data, isLoaded]);
+
   // Save progress to archive:
   async function saveTodayProgress() {
     const date = new Date();
