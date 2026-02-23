@@ -6,7 +6,7 @@ import Context from "../App/Context";
 import IconButton from "../Buttons/IconButton";
 import { FiSave } from "react-icons/fi";
 function ListOfLists() {
-  const { isAdding, data, hasChecks } = useContext(Context);
+  const { isAdding, data, hasChecks, saveTodayProgress } = useContext(Context);
   return (
     <div
       className={clsx(
@@ -26,7 +26,11 @@ function ListOfLists() {
           hasChecks ? styles.showSave : styles.hideSave,
         )}
       >
-        <IconButton icon={<FiSave />} text="Save Progress" />
+        <IconButton
+          icon={<FiSave />}
+          text="Save Progress"
+          func={saveTodayProgress}
+        />
       </div>
     </div>
   );

@@ -11,21 +11,27 @@ function AppProvider({ children, page, setPage, setYear, setMonth }) {
   const [specific, setSpecific] = useState(null);
   const [hasChecks, setHasChecks] = useState(false);
   const [error, setError] = useState(null);
+  const [successMessage, setSuccessMessage] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   const { data, setData } = TaskLogic();
+  const userID = "ameer-dev";
 
   useEffect(() => {
-    async function loadData() {
+    async function loadDailyData() {
       try {
         setPage(-1);
-        const docRef = doc(db, "users", "Ameer-dev", "data", "routine");
+        const docRef = doc(db, "users", userID, "data", "routine");
         const snapshot = await getDoc(docRef);
         await sleep(500);
         setPage(0);
 
         if (snapshot.exists()) {
-          setData(snapshot.data().tasks);
+          setData(snapshot.data().dailyTasks);
+        } else {
+          console.log("no exist");
         }
+        setIsLoaded(true);
       } catch (e) {
         setPage(0);
         console.error(e);
@@ -33,31 +39,51 @@ function AppProvider({ children, page, setPage, setYear, setMonth }) {
       }
     }
 
-    loadData();
+    loadDailyData();
   }, [setData, setPage]);
 
-  async function saveTemplate() {
-    try {
-      const template = {};
-      for (let timeSlot in data) {
-        template[timeSlot] = data[timeSlot].map((task) => {
-          return {
-            id: task.id,
-            text: task.text,
-            category: task.category,
-          };
-        });
-      }
-      const docRef = doc(db, "users", "ameer-dev", "data", "routine");
-      await setDoc(docRef, template);
-      handleErrors("data saved");
-    } catch (e) {
-      console.log(e);
-    }
-  }
-
   useEffect(() => {
-    console.log("re");
+    async function saveDailyData() {
+      try {
+        const docRef = doc(db, "users", userID, "data", "routine");
+        await setDoc(docRef, { dailyTasks: data });
+        // handleErrors("data saved");
+      } catch (e) {
+        console.error(e);
+        handleErrors("We couldn't save information!");
+      }
+    }
+    if (isLoaded) {
+      saveDailyData();
+    }
+  }, [data, isLoaded]);
+  // Save progress to archive:
+  async function saveTodayProgress() {
+    const date = new Date();
+    const today = [date.getFullYear(), date.getMonth() + 1, date.getDate()];
+    const todayStr = today.join("-");
+    let newData = {};
+    for (let time of Object.keys(data)) {
+      newData[time] = data[time].map((task) => {
+        return task.status !== null ? task : { ...task, status: "red" };
+      });
+    }
+
+    const docRef = doc(
+      db,
+      "users",
+      userID,
+      "data",
+      "archive",
+      "daily_records",
+      todayStr,
+    );
+    await setDoc(docRef, { record: newData });
+    handleSuccess("Progress saved!");
+    console.log(todayStr);
+  }
+  useEffect(() => {
+    console.log("rendered!");
     function lookForChecks() {
       const hasCheck = Object.values(data).some((category) =>
         category.some((task) => {
@@ -111,12 +137,10 @@ function AppProvider({ children, page, setPage, setYear, setMonth }) {
       } else {
         setData((prev) => ({ ...prev, [time]: [...prev[time], newTask] }));
         await sleep(1000);
-        saveTemplate();
       }
     } else {
       setData((prev) => ({ ...prev, [time]: [newTask] }));
       await sleep(1000);
-      saveTemplate();
     }
   }
   async function deleteTask(id = null, time = null) {
@@ -124,7 +148,6 @@ function AppProvider({ children, page, setPage, setYear, setMonth }) {
       const filteredData = data[time].filter((e) => e.id !== id);
       setData((prev) => ({ ...prev, [time]: filteredData }));
       await sleep(1000);
-      saveTemplate();
     }
   }
   function moveUp(index = null, time = null) {
@@ -164,7 +187,11 @@ function AppProvider({ children, page, setPage, setYear, setMonth }) {
   }
   function handleErrors(message) {
     setError(message);
-    setTimeout(() => setError(null), 5000);
+    setTimeout(() => setError(null), 3000);
+  }
+  function handleSuccess(message) {
+    setSuccessMessage(message);
+    setTimeout(() => setSuccessMessage(null), 2000);
   }
   const context = {
     error: error,
@@ -187,6 +214,9 @@ function AppProvider({ children, page, setPage, setYear, setMonth }) {
     isEdit: isEdit,
     updateTaskStatus: updateTaskStatus,
     hasChecks: hasChecks,
+    saveTodayProgress: saveTodayProgress,
+    successMessage: successMessage,
+    setSuccessMessage: setSuccessMessage,
   };
 
   return (

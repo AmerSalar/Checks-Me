@@ -6,6 +6,7 @@ import ListContainer from "./components/Container/ListContainer";
 import { useState } from "react";
 import Loading from "./components/Miscs/Loading";
 import ErrorPopup from "./components/Miscs/ErrorPopup";
+import SuccessPopup from "./components/Miscs/SuccessPopup";
 function App() {
   const [year, setYear] = useState(new Date().getFullYear());
   const [month, setMonth] = useState(new Date().getMonth() + 1);
@@ -22,6 +23,7 @@ function App() {
         <Header />
         <div className="app-container">
           <ErrorPopup />
+          <SuccessPopup />
           <Loading isActive={activePage === -1} />
           <ListContainer active={activePage === 0} />
           <Calendar year={year} month={month} active={activePage === 1} />
