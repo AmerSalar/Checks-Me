@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import Context from "./Context";
-import { db } from "../../firebase";
+import { auth, db } from "../../firebase";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import TaskLogic from "./TaskLogic";
+import { signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
 
 function AppProvider({ children, page, setPage, setYear, setMonth }) {
   const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -14,49 +15,74 @@ function AppProvider({ children, page, setPage, setYear, setMonth }) {
   const [successMessage, setSuccessMessage] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
 
+  const [email, setEmail] = useState(null);
+  const [userID, setUserID] = useState("ameer-dev");
+  const [loggedin, setLoggedin] = useState(false);
   const { data, setData } = TaskLogic();
-  const userID = "ameer-dev";
+
+  async function loginWithGoogle() {
+    const provider = new GoogleAuthProvider();
+    try {
+      const result = await signInWithPopup(auth, provider);
+      const userEmail = result.user.email;
+      const generatedUser = userEmail.toLowerCase().replace(/[^a-z0-9 ]/g, "");
+      setEmail(userEmail);
+      setUserID(generatedUser);
+      setLoggedin(true);
+
+      handleSuccess("Logged in successfully!");
+    } catch (e) {
+      console.error(e);
+      handleErrors("Failed to login!");
+    }
+  }
+  function logout() {
+    signOut(auth);
+  }
 
   useEffect(() => {
     async function loadDailyData() {
-      try {
-        setPage(-1);
-        const docRef = doc(db, "users", userID, "data", "routine");
-        const snapshot = await getDoc(docRef);
-        setPage(0);
+      if (loggedin) {
+        try {
+          setPage(-1);
+          const docRef = doc(db, "users", userID, "data", "routine");
+          const snapshot = await getDoc(docRef);
+          setPage(0);
 
-        if (snapshot.exists()) {
-          setData(snapshot.data().dailyTasks);
-        } else {
-          console.log("no exist");
+          if (snapshot.exists()) {
+            setData(snapshot.data().dailyTasks);
+          } else {
+            console.log("new user");
+          }
+          setIsLoaded(true);
+        } catch (e) {
+          setPage(0);
+          console.error(e);
+          handleErrors("Couldn't load tasks!");
         }
-        setIsLoaded(true);
-      } catch (e) {
-        setPage(0);
-        console.error(e);
-        handleErrors("Couldn't load tasks!");
       }
     }
 
     loadDailyData();
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [loggedin]);
 
   useEffect(() => {
-    async function saveDailyData() {
-      try {
-        const docRef = doc(db, "users", userID, "data", "routine");
-        await setDoc(docRef, { dailyTasks: data });
-      } catch (e) {
-        console.error(e);
-        handleErrors("We couldn't save information!");
+    async function saveTemplate() {
+      if (loggedin && isLoaded) {
+        try {
+          const docRef = doc(db, "users", userID, "data", "routine");
+          await setDoc(docRef, { dailyTasks: data });
+        } catch (e) {
+          console.error(e);
+          handleErrors("We couldn't save information!");
+        }
       }
     }
-    if (isLoaded) {
-      saveDailyData();
-    }
-  }, [data, isLoaded]);
+    saveTemplate();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data]);
 
   // Save progress to archive:
   async function saveTodayProgress() {
@@ -195,6 +221,8 @@ function AppProvider({ children, page, setPage, setYear, setMonth }) {
     setTimeout(() => setSuccessMessage(null), 2000);
   }
   const context = {
+    login: loginWithGoogle,
+    isLogged: loggedin,
     error: error,
     setError: setError,
     isMainPage: page === 0,

@@ -7,6 +7,7 @@ import { useState } from "react";
 import Loading from "./components/Miscs/Loading";
 import ErrorPopup from "./components/Miscs/ErrorPopup";
 import SuccessPopup from "./components/Miscs/SuccessPopup";
+import Login from "./components/App/Login";
 function App() {
   const [year, setYear] = useState(new Date().getFullYear());
   const [month, setMonth] = useState(new Date().getMonth() + 1);
@@ -21,6 +22,7 @@ function App() {
         setMonth={setMonth}
       >
         <Header />
+        <Login />
         <div className="app-container">
           <ErrorPopup />
           <SuccessPopup />
