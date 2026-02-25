@@ -28,7 +28,7 @@ function AppProvider({ children, page, setPage, setYear, setMonth }) {
   async function loginWithGoogle() {
     const provider = new GoogleAuthProvider();
     try {
-      const result = await signInWithRedirect(auth, provider);
+      const result = await signInWithPopup(auth, provider);
       const userEmail = result.user.email;
       const generatedUser = userEmail.toLowerCase().replace(/[^a-z0-9 ]/g, "");
       setEmail(userEmail);
