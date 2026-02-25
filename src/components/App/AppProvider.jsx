@@ -3,7 +3,12 @@ import Context from "./Context";
 import { auth, db } from "../../firebase";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import TaskLogic from "./TaskLogic";
-import { signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
+import {
+  signInWithPopup,
+  GoogleAuthProvider,
+  signOut,
+  signInWithRedirect,
+} from "firebase/auth";
 
 function AppProvider({ children, page, setPage, setYear, setMonth }) {
   const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -23,7 +28,7 @@ function AppProvider({ children, page, setPage, setYear, setMonth }) {
   async function loginWithGoogle() {
     const provider = new GoogleAuthProvider();
     try {
-      const result = await signInWithPopup(auth, provider);
+      const result = await signInWithRedirect(auth, provider);
       const userEmail = result.user.email;
       const generatedUser = userEmail.toLowerCase().replace(/[^a-z0-9 ]/g, "");
       setEmail(userEmail);
