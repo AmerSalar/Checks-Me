@@ -20,9 +20,13 @@ function AppProvider({ children, page, setPage, setYear, setMonth }) {
   const [successMessage, setSuccessMessage] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
 
-  const [email, setEmail] = useState(null);
-  const [userID, setUserID] = useState("ameer-dev");
-  const [loggedin, setLoggedin] = useState(false);
+  const [email, setEmail] = useState(localStorage.getItem("email") || null);
+  const [userID, setUserID] = useState(
+    localStorage.getItem("username") || "unknown",
+  );
+  const [loggedin, setLoggedin] = useState(
+    localStorage.getItem("isLogged") || false,
+  );
   const { data, setData } = TaskLogic();
 
   async function loginWithGoogle() {
@@ -31,6 +35,9 @@ function AppProvider({ children, page, setPage, setYear, setMonth }) {
       const result = await signInWithPopup(auth, provider);
       const userEmail = result.user.email;
       const generatedUser = userEmail.toLowerCase().replace(/[^a-z0-9 ]/g, "");
+      localStorage.setItem("email", userEmail);
+      localStorage.setItem("username", generatedUser);
+      localStorage.setItem("isLogged", true);
       setEmail(userEmail);
       setUserID(generatedUser);
       setLoggedin(true);
