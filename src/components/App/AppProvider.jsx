@@ -60,10 +60,13 @@ function AppProvider({ children, page, setPage, setYear, setMonth }) {
 
       if (snapshot.exists()) {
         setLastUpdateDate(snapshot.data().lastUpdate);
+      } else {
+        saveLastUpdateDate();
       }
     }
 
     async function loadDailyData() {
+      await syncLastUpdate();
       if (loggedin) {
         try {
           setPage(-1);
@@ -85,7 +88,6 @@ function AppProvider({ children, page, setPage, setYear, setMonth }) {
       }
     }
 
-    syncLastUpdate();
     loadDailyData();
 
     // console.log(lastUpdateDate);
@@ -190,7 +192,6 @@ function AppProvider({ children, page, setPage, setYear, setMonth }) {
       return task;
     });
     setData((prev) => ({ ...prev, [time]: updatedArray }));
-    saveLastUpdateDate();
   }
   function togglePage(index = null) {
     if (index !== null) {
