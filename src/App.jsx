@@ -8,6 +8,7 @@ import Loading from "./components/Miscs/Loading";
 import ErrorPopup from "./components/Miscs/ErrorPopup";
 import SuccessPopup from "./components/Miscs/SuccessPopup";
 import Login from "./components/App/Login";
+import ProfileContainer from "./components/Profile/ProfileContainer";
 function App() {
   const [year, setYear] = useState(new Date().getFullYear());
   const [month, setMonth] = useState(new Date().getMonth() + 1);
@@ -28,7 +29,9 @@ function App() {
           <SuccessPopup />
           <Loading isActive={activePage === -1} />
           <ListContainer active={activePage === 0} />
+
           <Calendar year={year} month={month} active={activePage === 1} />
+          <ProfileContainer active={activePage === 3} />
         </div>
 
         <Footer />

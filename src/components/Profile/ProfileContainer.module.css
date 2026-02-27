@@ -1,0 +1,21 @@
+.cont {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.hide {
+  display: none;
+}
+
+.cont button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  background: linear-gradient(180deg, var(--light-main), var(--main));
+}
+
+.cont button:active {
+  box-shadow: 0px 0px 5px var(--main);
+}

@@ -3,12 +3,7 @@ import Context from "./Context";
 import { auth, db } from "../../firebase";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import TaskLogic from "./TaskLogic";
-import {
-  signInWithPopup,
-  GoogleAuthProvider,
-  signOut,
-  signInWithRedirect,
-} from "firebase/auth";
+import { signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
 
 function AppProvider({ children, page, setPage, setYear, setMonth }) {
   const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -19,8 +14,9 @@ function AppProvider({ children, page, setPage, setYear, setMonth }) {
   const [error, setError] = useState(null);
   const [successMessage, setSuccessMessage] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [lastUpdateDate, setLastUpdateDate] = useState(null);
 
-  const [email, setEmail] = useState(localStorage.getItem("email") || null);
+  // const [email, setEmail] = useState(localStorage.getItem("email") || null);
   const [userID, setUserID] = useState(
     localStorage.getItem("username") || "unknown",
   );
@@ -35,10 +31,10 @@ function AppProvider({ children, page, setPage, setYear, setMonth }) {
       const result = await signInWithPopup(auth, provider);
       const userEmail = result.user.email;
       const generatedUser = userEmail.toLowerCase().replace(/[^a-z0-9 ]/g, "");
-      localStorage.setItem("email", userEmail);
+      // localStorage.setItem("email", userEmail);
       localStorage.setItem("username", generatedUser);
       localStorage.setItem("isLogged", true);
-      setEmail(userEmail);
+      // setEmail(userEmail);
       setUserID(generatedUser);
       setLoggedin(true);
 
@@ -48,11 +44,25 @@ function AppProvider({ children, page, setPage, setYear, setMonth }) {
       handleErrors("Failed to login!");
     }
   }
-  function logout() {
-    signOut(auth);
+  async function logout() {
+    await signOut(auth);
+    localStorage.removeItem("username");
+    localStorage.removeItem("isLogged");
+    setUserID("unknown");
+    setLoggedin(false);
+    handleSuccess("Logged out successfully!");
   }
 
   useEffect(() => {
+    async function syncLastUpdate() {
+      const docRef = doc(db, "users", userID, "data", "config");
+      const snapshot = await getDoc(docRef);
+
+      if (snapshot.exists()) {
+        setLastUpdateDate(snapshot.data().lastUpdate);
+      }
+    }
+
     async function loadDailyData() {
       if (loggedin) {
         try {
@@ -75,10 +85,27 @@ function AppProvider({ children, page, setPage, setYear, setMonth }) {
       }
     }
 
+    syncLastUpdate();
     loadDailyData();
+
+    // console.log(lastUpdateDate);
+    // console.log(today);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loggedin]);
+  useEffect(() => {
+    const today = new Date().toISOString().split("T")[0];
+    async function autoSave() {
+      if (isLoaded && lastUpdateDate && today > lastUpdateDate) {
+        await saveProgress(true);
+        resetChecks();
+        await saveLastUpdateDate();
+      }
+    }
+
+    autoSave();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [lastUpdateDate, isLoaded]);
 
   useEffect(() => {
     async function saveTemplate() {
@@ -97,10 +124,7 @@ function AppProvider({ children, page, setPage, setYear, setMonth }) {
   }, [data]);
 
   // Save progress to archive:
-  async function saveTodayProgress() {
-    const date = new Date();
-    const today = [date.getFullYear(), date.getMonth() + 1, date.getDate()];
-    const todayStr = today.join("-");
+  async function saveProgress(event) {
     let newData = {};
     for (let time of Object.keys(data)) {
       newData[time] = data[time].map((task) => {
@@ -115,12 +139,24 @@ function AppProvider({ children, page, setPage, setYear, setMonth }) {
       "data",
       "archive",
       "daily_records",
-      todayStr,
+      lastUpdateDate,
     );
     await setDoc(docRef, { record: newData });
-    handleSuccess("Progress saved!");
-    console.log(todayStr);
+    if (event) {
+      handleSuccess("Progress saved!");
+    }
+    console.log(lastUpdateDate);
   }
+
+  async function saveLastUpdateDate() {
+    const todayStr = new Date().toISOString().split("T")[0];
+
+    const docRef = doc(db, "users", userID, "data", "config");
+    await setDoc(docRef, { lastUpdate: todayStr });
+
+    setLastUpdateDate(todayStr);
+  }
+
   useEffect(() => {
     console.log("rendered!");
     function lookForChecks() {
@@ -134,6 +170,18 @@ function AppProvider({ children, page, setPage, setYear, setMonth }) {
     setHasChecks(lookForChecks());
   }, [data]);
 
+  function resetChecks(event) {
+    const newData = {};
+    for (let time of Object.keys(data)) {
+      newData[time] = data[time].map((task) => {
+        return { ...task, status: null };
+      });
+    }
+
+    setData(newData);
+    if (event) handleSuccess("Tasks are reset!");
+  }
+
   function updateTaskStatus(id, time, status) {
     const updatedArray = data[time].map((task) => {
       if (task.id === id) {
@@ -142,6 +190,7 @@ function AppProvider({ children, page, setPage, setYear, setMonth }) {
       return task;
     });
     setData((prev) => ({ ...prev, [time]: updatedArray }));
+    saveLastUpdateDate();
   }
   function togglePage(index = null) {
     if (index !== null) {
@@ -234,7 +283,9 @@ function AppProvider({ children, page, setPage, setYear, setMonth }) {
   }
   const context = {
     login: loginWithGoogle,
+    logout: logout,
     isLogged: loggedin,
+    reset: resetChecks,
     error: error,
     setError: setError,
     isMainPage: page === 0,
@@ -255,7 +306,7 @@ function AppProvider({ children, page, setPage, setYear, setMonth }) {
     isEdit: isEdit,
     updateTaskStatus: updateTaskStatus,
     hasChecks: hasChecks,
-    saveTodayProgress: saveTodayProgress,
+    saveTodayProgress: saveProgress,
     successMessage: successMessage,
     setSuccessMessage: setSuccessMessage,
   };

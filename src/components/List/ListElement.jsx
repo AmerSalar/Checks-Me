@@ -2,7 +2,7 @@ import clsx from "clsx";
 import Bar from "../Bar/CircleBar";
 import EditBar from "../Bar/EditBar";
 import styles from "./ListElement.module.css";
-import React, { useCallback, useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import Context from "../App/Context";
 import {
   RiMoonFill,
@@ -20,9 +20,7 @@ import {
 
 function ListElement(props) {
   const { updateTaskStatus } = useContext(Context);
-  const [active, setActive] = useState(props.eStatus);
   const [singleEdit, setSingleEdit] = useState(false);
-  const [check, setCheck] = useState(false);
   const icon = {
     general: <RiCircleFill />,
     religion: <RiMoonFill />,
@@ -36,14 +34,12 @@ function ListElement(props) {
     sport: <RiFootballFill />,
     chore: <RiPaintBrushFill />,
   };
+  const isChecked = props.eStatus !== null;
   function updateTask(status) {
     updateTaskStatus(props.eId, props.eTime, status);
   }
-  const checker = useCallback((val) => {
-    setCheck(val);
-  }, []);
   let text = props.text;
-  if (check) text = <del>{props.text}</del>;
+  if (isChecked) text = <del>{props.text}</del>;
   function toggleEditable() {
     setSingleEdit(false);
   }
@@ -52,7 +48,7 @@ function ListElement(props) {
     <div
       className={clsx(
         styles.cont,
-        check && styles.checked,
+        isChecked && styles.checked,
         props.eStreak >= 7 && styles.contPremium,
       )}
       onClick={toggleEditable}
@@ -63,10 +59,8 @@ function ListElement(props) {
       </div>
 
       <Bar
-        checker={checker}
         isSingleEdit={singleEdit}
-        active={active}
-        setActive={setActive}
+        active={props.eStatus}
         update={updateTask}
         id={props.eId}
       />
